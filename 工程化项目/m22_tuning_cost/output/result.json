@@ -1,0 +1,21 @@
+{
+  "grid": {
+    "best": {
+      "max_depth": 3,
+      "n_estimators": 50
+    },
+    "cv": 0.8667,
+    "sec": 1.107
+  },
+  "random": {
+    "best": {
+      "n_estimators": 50,
+      "max_depth": 4
+    },
+    "cv": 0.8633,
+    "sec": 0.635
+  },
+  "time_saved_sec": 0.472,
+  "cv_gap": 0.0034,
+  "n_combos": 6
+}

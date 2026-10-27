@@ -1,0 +1,62 @@
+{
+  "kb_size": 20,
+  "kb_source": "config\\knowledge_base.json",
+  "n_queries": 3,
+  "grounded": 2,
+  "hallucination_rate": 0.3333,
+  "rows": [
+    {
+      "query": "泵振动超标要看哪个标准",
+      "grounded": true,
+      "citations": [
+        {
+          "id": "R1",
+          "category": "设备运维规范",
+          "text": "泵类设备振动速度有效值超过4.5mm/s应列入重点关注，超过7.1mm/s必须停机检查。",
+          "score": 0.0909
+        },
+        {
+          "id": "R10",
+          "category": "故障排查指南",
+          "text": "振动频谱出现明显16Hz（二倍转频）峰：判定轴承磨损，测特征频率确认后更换轴承。",
+          "score": 0.0909
+        },
+        {
+          "id": "R15",
+          "category": "工艺参数标准",
+          "text": "泵类设备正常振动速度有效值区间为1.8-4.5mm/s，重点监测上限4.5mm/s。",
+          "score": 0.0909
+        }
+      ]
+    },
+    {
+      "query": "电机电流高但转速正常",
+      "grounded": true,
+      "citations": [
+        {
+          "id": "R9",
+          "category": "故障排查指南",
+          "text": "电机电流偏高而转速正常：排查机械过载、轴承磨损与三相不平衡。",
+          "score": 0.6
+        },
+        {
+          "id": "R15",
+          "category": "工艺参数标准",
+          "text": "泵类设备正常振动速度有效值区间为1.8-4.5mm/s，重点监测上限4.5mm/s。",
+          "score": 0.1
+        },
+        {
+          "id": "R17",
+          "category": "工艺参数标准",
+          "text": "风机轴承正常温度区间为环境温度+15℃以内，报警线为75℃。",
+          "score": 0.1
+        }
+      ]
+    },
+    {
+      "query": "工装夹具的存放位置",
+      "grounded": false,
+      "citations": []
+    }
+  ]
+}

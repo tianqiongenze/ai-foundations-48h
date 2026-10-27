@@ -1,0 +1,19 @@
+# 《AI应用基础（48课时版）》（ai48 环境） —— 精确版本锁定（requirements.lock）
+# 生成日期: 2026-10-13（73号轮）｜生成方式: 在本机已校准环境中读取已安装包的实际版本
+# 用法: pip install -r requirements.lock        （离线: pip install --no-index --find-links=./offline_wheels -r requirements.lock）
+# 说明:
+#   1. requirements.txt 用区间(>=)便于跟随升级；本文件用精确(==)保证**课堂结果可复现**。
+#   2. 标 `# 待核验` 的包在本机未安装（多为离线/可选依赖），联网或安装后请用下方命令回填。
+#   3. 回填命令: python -c "import importlib.metadata as m; print(m.version('包名'))"
+
+numpy==2.4.4
+pandas==3.0.5
+scikit-learn==1.9.0
+scipy==1.18.0
+# matplotlib==<待核验>   # 图表(离线wheel)
+joblib==1.5.3
+litestar==2.24.0
+granian==2.8.2
+# chromadb==<待核验>   # M4-2 RAG解B
+# xgboost==<待核验>   # M2-2主线(可选,缺则回退RF)
+torch==2.12.1+cpu

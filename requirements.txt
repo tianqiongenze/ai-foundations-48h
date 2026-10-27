@@ -1,0 +1,16 @@
+# AI应用基础（48课时版）依赖——50号轮版本校准（2026-09联网核实）
+# 安装：conda activate ai48 && pip install -r requirements.txt
+# 机房离线安装：pip download转发轮子，见完全指南
+numpy>=2.0
+pandas>=2.0
+scikit-learn>=1.3
+scipy>=1.10
+matplotlib>=3.7
+joblib>=1.3
+# M4系（33号轮起）
+litestar>=2.0
+granian>=2.0
+chromadb>=1.5
+# 选做
+# xgboost>=2.0
+# torch/torchvision（M3真机版，教师演示；torch 2.14+已兼容numpy 2.x）

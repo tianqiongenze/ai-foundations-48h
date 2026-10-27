@@ -1,0 +1,6 @@
+{
+  "image_line_cv": 1.0,
+  "series_line_cv": 0.9944,
+  "pick": "CNN 焊缝线",
+  "gap": 0.0056
+}

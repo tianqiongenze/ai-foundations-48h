@@ -1,0 +1,9 @@
+{
+  "rows_before": 300,
+  "rows_after": 275,
+  "removed": 25,
+  "quality": 0.8403,
+  "py_rows": 275,
+  "pd_rows": 275,
+  "consistent": true
+}

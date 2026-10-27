@@ -1,0 +1,8 @@
+{
+  "dim_raw": 192,
+  "dim_frozen": 8,
+  "raw_acc": 0.915,
+  "transfer_acc": 0.96,
+  "gain": 0.045,
+  "evr": 0.3296
+}

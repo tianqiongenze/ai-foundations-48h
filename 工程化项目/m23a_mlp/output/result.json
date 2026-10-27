@@ -1,0 +1,16 @@
+{
+  "n_epochs": 25,
+  "acc": 0.94,
+  "acc_reg": 0.94,
+  "diagnosis": {
+    "segments": 4,
+    "means": [
+      0.5819,
+      0.4534,
+      0.3399,
+      0.2425
+    ],
+    "improving": true,
+    "final": 0.208
+  }
+}
