@@ -20,11 +20,11 @@
     "finetune/noaug": 0.51
   },
   "image_mode": "resnet18-imagenet-local-cache",
-  "image_wall_sec": 31.3,
+  "image_wall_sec": 48.8,
   "image_weights": {
     "weights": "resnet18-f37072fd.pth",
     "in_features": 512,
-    "load_sec": 0.181
+    "load_sec": 0.373
   },
   "image_best_acc": 1.0,
   "aug_gain_frozen": -0.005,

@@ -5,3 +5,9 @@ venv/
 .DS_Store
 *.bak*
 .ipynb_checkpoints/
+
+# pytest 在仓库内实跑时的临时输出目录（run.py 的 output/ 才是交付证据）
+*/工程化项目/*/output/test_run/
+
+# 97号轮：终端截图可由 capture97.py + render97.py 重跑再生，且已内嵌进各 deck
+工具/ppt97/evidence/*/shot_*.png

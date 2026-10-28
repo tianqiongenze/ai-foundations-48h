@@ -5,7 +5,7 @@
       "n_estimators": 50
     },
     "f1": 0.8315,
-    "sec": 0.861,
+    "sec": 2.121,
     "candidates": [
       {
         "params": {
@@ -13,7 +13,7 @@
           "n_estimators": 50
         },
         "f1": 0.8302,
-        "sec": 0.092
+        "sec": 0.305
       },
       {
         "params": {
@@ -21,7 +21,7 @@
           "n_estimators": 100
         },
         "f1": 0.8247,
-        "sec": 0.18
+        "sec": 0.316
       },
       {
         "params": {
@@ -29,7 +29,7 @@
           "n_estimators": 50
         },
         "f1": 0.8308,
-        "sec": 0.095
+        "sec": 0.151
       },
       {
         "params": {
@@ -37,7 +37,7 @@
           "n_estimators": 100
         },
         "f1": 0.8156,
-        "sec": 0.183
+        "sec": 0.555
       },
       {
         "params": {
@@ -45,7 +45,7 @@
           "n_estimators": 50
         },
         "f1": 0.8315,
-        "sec": 0.093
+        "sec": 0.313
       },
       {
         "params": {
@@ -53,7 +53,7 @@
           "n_estimators": 100
         },
         "f1": 0.8214,
-        "sec": 0.182
+        "sec": 0.446
       }
     ]
   },
@@ -63,7 +63,7 @@
       "max_depth": 4
     },
     "f1": 0.8308,
-    "sec": 0.501,
+    "sec": 1.502,
     "candidates": [
       {
         "params": {
@@ -71,7 +71,7 @@
           "max_depth": 5
         },
         "f1": 0.8214,
-        "sec": 0.186
+        "sec": 0.482
       },
       {
         "params": {
@@ -79,7 +79,7 @@
           "max_depth": 4
         },
         "f1": 0.8308,
-        "sec": 0.094
+        "sec": 0.247
       },
       {
         "params": {
@@ -87,11 +87,11 @@
           "max_depth": 3
         },
         "f1": 0.8247,
-        "sec": 0.186
+        "sec": 0.743
       }
     ]
   },
-  "time_saved_sec": 0.36,
+  "time_saved_sec": 0.619,
   "f1_gap": 0.0007,
   "n_combos": 6,
   "learning_curve": {
@@ -124,14 +124,14 @@
     "knee_n": 160,
     "scoring": "f1",
     "knee_gain_max": 0.01,
-    "sec": 0.469
+    "sec": 1.155
   },
   "boost_arm": {
     "engine": "sklearn.GradientBoostingClassifier",
     "fallback": true,
     "best_iter": 22,
     "f1": 0.8571,
-    "sec": 0.236,
+    "sec": 0.505,
     "note": "离线兜底：未安装 xgboost，改用 sklearn GradientBoostingClassifier（staged_predict 逐树测验证集 F1 取峰值，等价 f1 早停口径）"
   },
   "worklog": {
@@ -141,12 +141,12 @@
         "n_estimators": 50
       },
       "f1": 0.8315,
-      "sec": 0.093
+      "sec": 0.313
     },
-    "total_sec": 0.825
+    "total_sec": 2.086
   },
   "reproducible": true,
-  "run_sec": 4.528,
+  "run_sec": 11.678,
   "gates": {
     "D": {
       "style_min": 70.0
@@ -333,14 +333,14 @@
       }
     ],
     "claimed": "优(A)",
-    "summary": "同种子重跑两次逐位一致｜grid F1 实测 0.8315｜perf_counter 墙钟 4.528s（限时 7200s）｜曲线 4 档拐点 n=160（增益阈值 0.01）｜决策记录完整（result.json 回读校验）｜xgboost MISS → 兜底引擎=sklearn.GradientBoostingClassifier，口径已记录｜实测规范率 96.53%",
+    "summary": "同种子重跑两次逐位一致｜grid F1 实测 0.8315｜perf_counter 墙钟 11.678s（限时 7200s）｜曲线 4 档拐点 n=160（增益阈值 0.01）｜决策记录完整（result.json 回读校验）｜xgboost MISS → 兜底引擎=sklearn.GradientBoostingClassifier，口径已记录｜实测规范率 96.53%",
     "measured": {
       "reproducible": true,
       "grid_f1": 0.8315,
       "random_f1": 0.8308,
       "boost_f1": 0.8571,
       "fast_ok": true,
-      "run_sec": 4.528,
+      "run_sec": 11.678,
       "curve_points": 4,
       "knee_found": true,
       "decision_ok": true,

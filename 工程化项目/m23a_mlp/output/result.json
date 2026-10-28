@@ -24,7 +24,7 @@
         "acc": 0.86,
         "f1": 0.8662,
         "epochs": 51,
-        "sec": 0.053
+        "sec": 0.039
       },
       {
         "hidden": [
@@ -36,7 +36,7 @@
         "acc": 0.9467,
         "f1": 0.9467,
         "epochs": 38,
-        "sec": 0.052
+        "sec": 0.094
       },
       {
         "hidden": [
@@ -47,7 +47,7 @@
         "acc": 0.94,
         "f1": 0.9379,
         "epochs": 25,
-        "sec": 0.032
+        "sec": 0.082
       }
     ],
     "best_acc": 0.9467,
@@ -60,14 +60,14 @@
       "acc": 0.94,
       "f1": 0.9379,
       "epochs": 25,
-      "sec": 0.032
+      "sec": 0.082
     }
   },
   "torch_no_dropout": {
     "engine": "torch",
     "acc": 0.9267,
     "epochs": 40,
-    "sec": 0.066,
+    "sec": 0.129,
     "note": "nn.Linear×2 + nn.Dropout(0.0)，Adam 全批训练，manual_seed=0"
   },
   "overfit_no_dropout": {
@@ -84,7 +84,7 @@
       "acc": 0.9267,
       "gap": 0.6296,
       "epochs": 40,
-      "sec": 0.029
+      "sec": 0.142
     },
     {
       "engine": "torch",
@@ -92,7 +92,7 @@
       "acc": 0.92,
       "gap": 0.5201,
       "epochs": 40,
-      "sec": 0.029
+      "sec": 0.077
     },
     {
       "engine": "torch",
@@ -100,7 +100,7 @@
       "acc": 0.9067,
       "gap": 0.4941,
       "epochs": 40,
-      "sec": 0.029
+      "sec": 0.042
     }
   ],
   "overfit_dropout": {
@@ -315,7 +315,7 @@
           "acc": 0.9267,
           "gap": 0.6296,
           "epochs": 40,
-          "sec": 0.029
+          "sec": 0.142
         },
         {
           "engine": "torch",
@@ -323,7 +323,7 @@
           "acc": 0.92,
           "gap": 0.5201,
           "epochs": 40,
-          "sec": 0.029
+          "sec": 0.077
         },
         {
           "engine": "torch",
@@ -331,7 +331,7 @@
           "acc": 0.9067,
           "gap": 0.4941,
           "epochs": 40,
-          "sec": 0.029
+          "sec": 0.042
         }
       ],
       "best_arm_dropout": 0.1,

@@ -66,7 +66,7 @@
   },
   "deploy_demo": {
     "ok": true,
-    "port": 52571,
+    "port": 52549,
     "status": 200,
     "bytes": 1633,
     "file_bytes": 1633,

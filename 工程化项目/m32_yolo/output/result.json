@@ -52,11 +52,11 @@
     "cpu": 10
   },
   "fps_by_win": {
-    "4": 2190.3,
-    "8": 3703.8,
-    "16": 4111.5
+    "4": 3207.5,
+    "8": 3500.0,
+    "16": 4280.6
   },
-  "speedup_pct_win16_vs_win4": 87.7,
+  "speedup_pct_win16_vs_win4": 33.5,
   "style_rate": 96.88,
   "tiers": {
     "tiers": [
@@ -128,7 +128,7 @@
       "table_complete": true,
       "rec_ap": 0.8271604938271602,
       "reason_ok": true,
-      "speedup": 87.71114719494504,
+      "speedup": 33.45622332924923,
       "decisions": 1
     }
   },
@@ -139,8 +139,8 @@
     "model": "/Users/joelgong/PycharmProjects/ai-course-teaching-resources/05-AI应用基础48课时版/data/weights/yolov8n.onnx",
     "max_conf": 0.1119,
     "boxes_over_thr": 0,
-    "fps": 24.85,
-    "frame_ms": 40.2,
+    "fps": 3.79,
+    "frame_ms": 264.1,
     "note": "COCO 80 类无'工业缺陷'类：合成缺陷上实测最大置信度见本行，过阈(0.25)框数=0——YOLO 通道对合成缺陷不可用是实测结论，非猜测"
   },
   "annotated": [
