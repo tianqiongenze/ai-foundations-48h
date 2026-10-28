@@ -1,0 +1,8 @@
+set,n_features,accuracy,accuracy_spread,f1_macro,features
+D档最小集(前5特征),5,0.4778,0.1083,0.473,t_mean|t_std|t_rms|t_ptp|t_max
+A·仅时域(13),13,0.5583,0.075,0.5528,t_mean|t_std|t_rms|t_ptp|t_max|t_absmean|t_kurt|t_skew|t_crest|t_shape|t_impulse|t_clearance|t_zcr
+B·仅频域(5),5,0.9778,0.0166,0.9777,f_a8|f_a16|f_ratio2x|f_centroid|f_hf_ratio
+C·全集(18),18,0.975,0.0166,0.9749,t_mean|t_std|t_rms|t_ptp|t_max|t_absmean|t_kurt|t_skew|t_crest|t_shape|t_impulse|t_clearance|t_zcr|f_a8|f_a16|f_ratio2x|f_centroid|f_hf_ratio
+D·Top8 精选,8,0.9778,0.0083,0.9777,f_ratio2x|f_a16|f_hf_ratio|t_kurt|t_zcr|f_centroid|t_absmean|t_std
+E·Top3 极限集,3,0.9722,0.025,0.9721,f_ratio2x|f_a16|f_hf_ratio
+F·相关性初筛后(14),14,0.975,0.0,0.9749,t_mean|t_std|t_ptp|t_max|t_kurt|t_skew|t_crest|t_shape|t_zcr|f_a8|f_a16|f_ratio2x|f_centroid|f_hf_ratio

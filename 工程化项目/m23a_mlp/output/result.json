@@ -12,5 +12,335 @@
     ],
     "improving": true,
     "final": 0.208
+  },
+  "structure_search": {
+    "rows": [
+      {
+        "hidden": [
+          32,
+          16
+        ],
+        "params": 1554,
+        "acc": 0.86,
+        "f1": 0.8662,
+        "epochs": 51,
+        "sec": 0.053
+      },
+      {
+        "hidden": [
+          64,
+          32,
+          16
+        ],
+        "params": 4626,
+        "acc": 0.9467,
+        "f1": 0.9467,
+        "epochs": 38,
+        "sec": 0.052
+      },
+      {
+        "hidden": [
+          64,
+          32
+        ],
+        "params": 4130,
+        "acc": 0.94,
+        "f1": 0.9379,
+        "epochs": 25,
+        "sec": 0.032
+      }
+    ],
+    "best_acc": 0.9467,
+    "best_value": {
+      "hidden": [
+        64,
+        32
+      ],
+      "params": 4130,
+      "acc": 0.94,
+      "f1": 0.9379,
+      "epochs": 25,
+      "sec": 0.032
+    }
+  },
+  "torch_no_dropout": {
+    "engine": "torch",
+    "acc": 0.9267,
+    "epochs": 40,
+    "sec": 0.066,
+    "note": "nn.Linear×2 + nn.Dropout(0.0)，Adam 全批训练，manual_seed=0"
+  },
+  "overfit_no_dropout": {
+    "train_end": 0.0002,
+    "val_end": 0.6746,
+    "gap": 0.6744,
+    "val_rising": true,
+    "verdict": "疑似过拟合：val 损失后期回升且 train-val gap=0.674（上 Dropout/早停驯服它）"
+  },
+  "dropout_arms": [
+    {
+      "engine": "torch",
+      "dropout": 0.1,
+      "acc": 0.9267,
+      "gap": 0.6296,
+      "epochs": 40,
+      "sec": 0.029
+    },
+    {
+      "engine": "torch",
+      "dropout": 0.2,
+      "acc": 0.92,
+      "gap": 0.5201,
+      "epochs": 40,
+      "sec": 0.029
+    },
+    {
+      "engine": "torch",
+      "dropout": 0.3,
+      "acc": 0.9067,
+      "gap": 0.4941,
+      "epochs": 40,
+      "sec": 0.029
+    }
+  ],
+  "overfit_dropout": {
+    "train_end": 0.0023,
+    "val_end": 0.6319,
+    "gap": 0.6296,
+    "val_rising": true,
+    "verdict": "疑似过拟合：val 损失后期回升且 train-val gap=0.630（上 Dropout/早停驯服它）"
+  },
+  "png": "/Users/joelgong/PycharmProjects/ai-course-teaching-resources/05-AI应用基础48课时版/工程化项目/m23a_mlp/output/learning_curve.png",
+  "png_bytes": 48810,
+  "acc_best": 0.9467,
+  "gates": {
+    "D": {
+      "style_min": 70.0
+    },
+    "C": {
+      "acc_min": 0.75,
+      "png_min_bytes": 1000
+    },
+    "B": {
+      "dropout_arms": [
+        0.1,
+        0.2,
+        0.3
+      ]
+    },
+    "A": {
+      "candidates_min": 2
+    }
+  },
+  "code_style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "engine_real": true,
+    "n_files": 14,
+    "violations": 62,
+    "layout_violations": 19,
+    "structural_violations": 43,
+    "code_lines": 1179,
+    "rate": 94.74,
+    "min_pass": 70.0,
+    "by_rule": [
+      {
+        "code": "E501",
+        "count": 17,
+        "meaning": "行宽超 79 字符"
+      },
+      {
+        "code": "E128",
+        "count": 2,
+        "meaning": "续行少缩进（视觉对齐歧义）"
+      }
+    ],
+    "structural": {
+      "缺docstring": 43,
+      "命名非snake_case": 0,
+      "含制表符": 0,
+      "import星号": 0
+    },
+    "structural_clean": false,
+    "passes": true,
+    "fallback_note": "真实路径：pycodestyle 已安装并运行",
+    "per_file": [
+      {
+        "file": "run.py",
+        "code_lines": 18,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/mlp_clf/__init__.py",
+        "code_lines": 8,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/mlp_clf/cli.py",
+        "code_lines": 71,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 98.59
+      },
+      {
+        "file": "src/mlp_clf/config.py",
+        "code_lines": 153,
+        "layout_violations": 0,
+        "structural_violations": 3,
+        "file_rate": 98.04
+      },
+      {
+        "file": "src/mlp_clf/core.py",
+        "code_lines": 163,
+        "layout_violations": 15,
+        "structural_violations": 4,
+        "file_rate": 88.34
+      },
+      {
+        "file": "src/mlp_clf/io_utils.py",
+        "code_lines": 56,
+        "layout_violations": 0,
+        "structural_violations": 4,
+        "file_rate": 92.86
+      },
+      {
+        "file": "src/mlp_clf/pipeline.py",
+        "code_lines": 184,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 99.46
+      },
+      {
+        "file": "src/mlp_clf/report.py",
+        "code_lines": 24,
+        "layout_violations": 0,
+        "structural_violations": 2,
+        "file_rate": 91.67
+      },
+      {
+        "file": "src/mlp_clf/style.py",
+        "code_lines": 170,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 97.65
+      },
+      {
+        "file": "src/mlp_clf/tiers.py",
+        "code_lines": 89,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "tests/__init__.py",
+        "code_lines": 1,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 0.0
+      },
+      {
+        "file": "tests/test_config.py",
+        "code_lines": 28,
+        "layout_violations": 1,
+        "structural_violations": 6,
+        "file_rate": 75.0
+      },
+      {
+        "file": "tests/test_core.py",
+        "code_lines": 104,
+        "layout_violations": 0,
+        "structural_violations": 10,
+        "file_rate": 90.38
+      },
+      {
+        "file": "tests/test_tiers.py",
+        "code_lines": 110,
+        "layout_violations": 0,
+        "structural_violations": 10,
+        "file_rate": 90.91
+      }
+    ],
+    "definition": "规范率 = 100 x (1 - (版式违规条数 + 结构违规条数) / 非空代码行数)；结构项 = 缺docstring/命名非snake_case/制表符/import* 四类计数之和"
+  },
+  "tier_verdict": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "gate": 70.0,
+        "need": "模板可运行出指标；代码规范率≥70%",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "良好(C)",
+        "gate": 70.0,
+        "need": "准确率≥75%图完整",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优秀(B)",
+        "gate": 70.0,
+        "need": "gap收窄且指标不降；决策记录完整",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优(A)",
+        "gate": 70.0,
+        "need": "找到性价比最优结构",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      }
+    ],
+    "claimed": "优(A)",
+    "summary": "基线实测 acc 0.9400｜最高 acc 0.9467｜PNG 实测 48810B（下限 1000）｜无 Dropout gap 0.6744 → 合规臂 Dropout 0.1：gap 0.6744→0.6296 且 acc 0.9267≥基线 0.9267｜性价比最优结构 [64, 32]（params=4130）｜决策记录完整（result.json 回读校验）｜实测规范率 94.74%",
+    "measured": {
+      "metrics_ok": true,
+      "acc_best": 0.9467,
+      "png_bytes": 48810,
+      "gap_base": 0.6744,
+      "acc_base": 0.9267,
+      "arms": [
+        {
+          "engine": "torch",
+          "dropout": 0.1,
+          "acc": 0.9267,
+          "gap": 0.6296,
+          "epochs": 40,
+          "sec": 0.029
+        },
+        {
+          "engine": "torch",
+          "dropout": 0.2,
+          "acc": 0.92,
+          "gap": 0.5201,
+          "epochs": 40,
+          "sec": 0.029
+        },
+        {
+          "engine": "torch",
+          "dropout": 0.3,
+          "acc": 0.9067,
+          "gap": 0.4941,
+          "epochs": 40,
+          "sec": 0.029
+        }
+      ],
+      "best_arm_dropout": 0.1,
+      "gap_best": 0.6296,
+      "acc_best_arm": 0.9267,
+      "ss_candidates": 3,
+      "best_value_ok": true,
+      "decision_ok": true,
+      "style_rate": 94.74
+    }
   }
 }

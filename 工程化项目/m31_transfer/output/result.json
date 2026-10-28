@@ -4,5 +4,109 @@
   "raw_acc": 0.915,
   "transfer_acc": 0.96,
   "gain": 0.045,
-  "evr": 0.3296
+  "evr": 0.3296,
+  "style_rate": 97.39,
+  "style_engine": "pycodestyle（PEP8 官方参考实现）",
+  "resnet_probe": {
+    "torchvision": "0.29.0",
+    "cache_dir": "/Users/joelgong/.cache/torch/hub/checkpoints",
+    "cached": "resnet18-f37072fd.pth",
+    "note": "本地缓存已有 resnet18-f37072fd.pth → 真·ResNet 通道启用（直接读本地文件，零网络）"
+  },
+  "image2x2": {
+    "frozen/aug": 0.995,
+    "frozen/noaug": 1.0,
+    "finetune/aug": 0.995,
+    "finetune/noaug": 0.51
+  },
+  "image_mode": "resnet18-imagenet-local-cache",
+  "image_wall_sec": 31.3,
+  "image_weights": {
+    "weights": "resnet18-f37072fd.pth",
+    "in_features": 512,
+    "load_sec": 0.181
+  },
+  "image_best_acc": 1.0,
+  "aug_gain_frozen": -0.005,
+  "aug_gain_finetune": 0.485,
+  "curves_png": "/Users/joelgong/PycharmProjects/ai-course-teaching-resources/05-AI应用基础48课时版/工程化项目/m31_transfer/output/training_curves.png",
+  "tiers": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "need": "准确率≥70%；代码规范率≥70%",
+        "key": "D",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "良好(C)",
+        "need": "准确率≥75%加对照表",
+        "key": "C",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优秀(B)",
+        "need": "≥80%或增强有效论证；决策记录完整",
+        "key": "B",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优(A)",
+        "need": "准确率≥85%加曲线",
+        "key": "A",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      }
+    ],
+    "claimed": "优(A)",
+    "manual": [
+      "决策结论与理由的口头陈述（工单：答辩必答）",
+      "企业元验收栏签认（功能可用/参数留痕/数据可信，值班师傅签字）",
+      "底座口径是否可接受（真ResNet=本地缓存离线载入 / 兜底=本地CNN，实测证据见报告底座口径段）"
+    ],
+    "miss_note": null,
+    "gates": {
+      "D": {
+        "acc": 0.7,
+        "style_rate": 70.0
+      },
+      "C": {
+        "acc": 0.75,
+        "compare_rows": 2.0
+      },
+      "B": {
+        "acc": 0.8,
+        "decisions": 1.0
+      },
+      "A": {
+        "acc": 0.85,
+        "curves": 1.0
+      }
+    },
+    "measured": {
+      "acc": 1.0,
+      "style_rate": 97.39,
+      "compare_rows": 4,
+      "aug_gains": {
+        "frozen": -0.0050000000000000044,
+        "finetune": 0.485
+      },
+      "aug_effective": false,
+      "decisions": 1,
+      "curves": 1
+    }
+  },
+  "decision_entries": 1,
+  "compare_rows": 4
 }

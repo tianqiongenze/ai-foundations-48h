@@ -15,6 +15,7 @@ DEFAULTS: Dict[str, Any] = {
 
 
 def _scalar(v):
+    """标量解析：list 字面量/布尔/null/int/float 逐一试还原，其余按字符串。"""
     v = v.strip()
     if v.startswith("[") and v.endswith("]"):
         inner = v[1:-1].strip()
@@ -109,32 +110,41 @@ class Settings:
     seed: int = 7
     topk: int = 2
     items: List[Any] = field(default_factory=list)
+    # 工单四档门槛外置在 rules.yaml 的 tiers: 段——数字改配置不改代码
+    tiers: Dict[str, Any] = field(default_factory=dict)
     raw: Dict[str, Any] = field(default_factory=dict)
 
     @classmethod
     def from_dict(cls, d):
+        """字典 → Settings；tiers 段单独挂出（工单四档门槛的单一出处）。"""
         if not isinstance(d, dict):
             d = {}
         d = dict(DEFAULTS, **d)
         items = d.get("items")
         if not items:
-            # 数据集键名不限 items：devices / raw_lines / fleet / readings / corpus ...
+            # 数据集键名不限 items：devices / raw_lines / fleet / readings ...
             for k, v in d.items():
-                if isinstance(v, list) and v and isinstance(v[0], (dict, str, int, float)):
+                if (isinstance(v, list) and v
+                        and isinstance(v[0], (dict, str, int, float))):
                     items = v
                     break
         if not items:
             items = []
         if not isinstance(items, list):
             items = [items]
+        tier_cfg = d.get("tiers")
+        if not isinstance(tier_cfg, dict):
+            tier_cfg = {}
         return cls(
-            warn=float(d["warn"]), danger=float(d["danger"]), unit=str(d["unit"]),
+            warn=float(d["warn"]), danger=float(d["danger"]),
+            unit=str(d["unit"]),
             seed=int(d["seed"]), topk=int(d["topk"]),
-            items=items, raw=d,
+            items=items, tiers=tier_cfg, raw=d,
         )
 
 
 def load_config(path):
+    """读 rules.yaml（缺 PyYAML 时走 yaml_lite 兜底），返回 Settings。"""
     if not os.path.exists(path):
         raise FileNotFoundError("配置文件不存在: %s" % path)
     text = open(path, encoding="utf-8").read()

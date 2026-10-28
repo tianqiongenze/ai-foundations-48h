@@ -133,6 +133,15 @@ class Settings:
             items=items, raw=d,
         )
 
+    def tier_gates(self):
+        """工单四档门槛的读出位点：rules.yaml 的 tiers: 段。
+
+        判定逻辑在 tiers.py（纯函数），这里只负责把外置数字递给流水线——
+        改门槛只动 YAML，不动代码。
+        """
+        from . import tiers
+        return tiers.gates(self.raw)
+
 
 def load_config(path):
     if not os.path.exists(path):

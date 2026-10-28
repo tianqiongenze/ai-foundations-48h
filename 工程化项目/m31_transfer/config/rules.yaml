@@ -3,3 +3,28 @@ danger: 95.0
 unit: "c"
 seed: 7
 topk: 3
+
+# 2×2 图像迁移实验旋钮（transfer.run_experiment 读取；缺省用课堂值）
+# 时长预算：真·ResNet18 在 CPU 上每个微调 epoch 实测约 5-6 秒（32×32 小图），
+# finetune_epochs=25 会让 run.py 超过 90 秒预算；按铁律"可用小 epoch，
+# 但要在报告里写明口径"下调到 5，并同步写进报告时长口径行。档位门槛不动。
+use_resnet: true   # 主线：本地缓存有 ImageNet resnet 权重就写真·ResNet 通道（零网络）
+pretrain_epochs: 6 # 兜底通道（小CNN合成预训练）与对照口径的 epoch 数
+head_epochs: 40    # 冻结路只在缓存特征上训 Linear 头，秒级，不需下调
+finetune_epochs: 5
+aug_repeats: 4
+
+# 工单 M3-1 验收标准四档门槛（数字外置；tiers.py 只认这里，缺省回落 DEFAULT_GATES）
+tiers:
+  D:
+    acc: 0.70
+    style_rate: 70.0
+  C:
+    acc: 0.75
+    compare_rows: 2
+  B:
+    acc: 0.80
+    decisions: 1
+  A:
+    acc: 0.85
+    curves: 1

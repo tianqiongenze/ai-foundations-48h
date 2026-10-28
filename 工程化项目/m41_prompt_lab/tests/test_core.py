@@ -23,11 +23,11 @@ def test_score_tiers():
 
 
 def test_compare_lift_at_least_50():
-    out, base = core.compare(core.MockChannel())
+    out, base, _mf = core.compare(core.MockChannel())
     best = max(v["score"] for v in out.values())
     assert (best - base) * 100 >= 50
 
 
 def test_compare_deltas_relative_to_first():
-    out, _ = core.compare(core.MockChannel())
+    out, _, _mf = core.compare(core.MockChannel())
     assert out["朴素"]["delta"] == 0.0

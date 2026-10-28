@@ -3,3 +3,28 @@ danger: 95.0
 unit: "c"
 seed: 7
 topk: 3
+# 工单 M2-3b 验收线（良好C：CNN≥75% 或 LSTM 误差达标；改配置不改代码）
+cnn_target: 0.75
+lstm_err_target: 0.25
+
+# 工单《M2-3b工单-CNN或LSTM二选一（竞标）》"四、验收标准"四档门槛（数字外置）。
+# 判定唯一出处是 tiers: 段（tests/test_tiers.py 钉死与工单表逐字一致，
+# 禁止为变绿下调）；顶层 cnn_target/lstm_err_target 是展示线，与本段同值。
+tiers:
+  D:
+    require_reproducible: true   # 工单 D：指标可复现（同种子两次拟合 acc 一致）
+    min_code_style_pct: 70.0     # 工单 D：代码规范率≥70%
+  C:
+    cnn_min_acc: 0.75            # 工单 C：CNN≥75%
+    lstm_max_err: 0.25           # 工单 C：LSTM 误差达标上限（窗口错误率≤25%）
+    require_real_engine: true    # 兜底臂（无真卷积/无真 LSTM）的数字不认
+  B:
+    require_two_arm_compare: true  # 工单 B 可测半：CNN vs LSTM 两轮实测对比齐备
+    min_decision_chars: 120        # 决策记录段落存在且字数达标（竞标胜负/评委加分另人工）
+  A:
+    min_matrix_rows: 4           # 工单 A：选型决策矩阵候选行数下限
+    require_weights: true        # 权重列必须存在且和为 1
+    min_conclusion_chars: 20     # 矩阵结论成文字数下限
+    weight_acc: 0.5              # 得分口径：性能分=实测测试 acc
+    weight_speed: 0.3            # 得分口径：速度分=最快臂秒数/本臂秒数（实测）
+    weight_env: 0.2              # 得分口径：环境分按实测引擎依赖映射（sklearn/torch/兜底）

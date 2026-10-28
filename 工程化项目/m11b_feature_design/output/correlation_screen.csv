@@ -1,0 +1,7 @@
+a,b,r,keep,reason
+t_std,t_rms,1.0,t_std,信息重复，保留先出现的 t_std
+t_std,t_absmean,0.9962,t_std,信息重复，保留先出现的 t_std
+t_rms,t_absmean,0.9962,t_rms,信息重复，保留先出现的 t_rms
+t_crest,t_impulse,0.993,t_crest,信息重复，保留先出现的 t_crest
+t_crest,t_clearance,0.9791,t_crest,信息重复，保留先出现的 t_crest
+t_impulse,t_clearance,0.9958,t_impulse,信息重复，保留先出现的 t_impulse

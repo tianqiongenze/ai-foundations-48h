@@ -10,7 +10,9 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List
 
 DEFAULTS: Dict[str, Any] = {
-    "warn": 80.0, "danger": 95.0, "unit": "c", "seed": 7, "topk": 2,
+    "warn": 0.93, "danger": 0.03, "unit": "mm/s", "seed": 7, "topk": 8,
+    "min_features": 10, "cut_frac": 0.30, "folds": 4, "seeds": [0, 1, 2],
+    "ablation_random_sets": 5, "redundant_r": 0.95, "n_windows": 60,
 }
 
 
@@ -102,12 +104,18 @@ def yaml_lite(text):
 
 @dataclass
 class Settings:
-    """本项目全部可调参数（YAML 驱动）。"""
-    warn: float = 80.0
-    danger: float = 95.0
-    unit: str = "c"
+    """本项目全部可调参数（YAML 驱动）。
+
+    本项目的语义（与其他工单不同，故默认值与 config/rules.yaml 同步）：
+      warn   —— Top-N 精选集 accuracy 警戒线（低于即"砍过头/冗余未清"）
+      danger —— 消融红线：尾部砍 cut_frac 后 accuracy 允许的最大降幅
+      topk   —— Top-N 精选特征集的 N
+    """
+    warn: float = 0.93
+    danger: float = 0.03
+    unit: str = "mm/s"
     seed: int = 7
-    topk: int = 2
+    topk: int = 8
     items: List[Any] = field(default_factory=list)
     raw: Dict[str, Any] = field(default_factory=dict)
 
@@ -132,6 +140,15 @@ class Settings:
             seed=int(d["seed"]), topk=int(d["topk"]),
             items=items, raw=d,
         )
+
+    def tier_gates(self):
+        """工单四档门槛的读出位点：rules.yaml 的 tiers: 段。
+
+        判定逻辑在 tiers.py（纯函数），这里只负责把外置数字递给流水线——
+        改门槛只动 YAML，不动代码。
+        """
+        from . import tiers
+        return tiers.gates(self.raw)
 
 
 def load_config(path):

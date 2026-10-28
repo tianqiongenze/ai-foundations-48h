@@ -1,28 +1,806 @@
 {
-  "n_windows": 80,
-  "n_features": 5,
-  "ranked": [
-    [
-      "a16",
-      0.5842
-    ],
-    [
-      "rms",
-      0.2843
-    ],
-    [
-      "ptp",
-      0.0863
-    ],
-    [
-      "kurt",
-      0.0239
-    ],
-    [
-      "a8",
-      0.0213
-    ]
+  "seed": 7,
+  "unit": "mm/s",
+  "topk": 8,
+  "min_features": 10,
+  "cut_frac": 0.3,
+  "warn_line": 0.93,
+  "ablation_redline": 0.03,
+  "folds": 4,
+  "seeds": [
+    0,
+    1,
+    2
   ],
-  "top1": "a16",
-  "train_acc": 1.0
+  "n_samples": 120,
+  "n_windows_per_class": 60,
+  "n_features": 18,
+  "n_time_features": 13,
+  "n_freq_features": 5,
+  "feature_dict_rows": 18,
+  "feature_dict_missing_cells": [],
+  "new_features_v11": [
+    "t_crest",
+    "t_clearance",
+    "f_ratio2x",
+    "f_hf_ratio"
+  ],
+  "importance_board": [
+    {
+      "name": "f_ratio2x",
+      "importance": 0.3838,
+      "domain": "频域",
+      "since": "v1.1",
+      "rank_seed_min": 1,
+      "rank_seed_max": 1
+    },
+    {
+      "name": "f_a16",
+      "importance": 0.3236,
+      "domain": "频域",
+      "since": "v1.0",
+      "rank_seed_min": 2,
+      "rank_seed_max": 2
+    },
+    {
+      "name": "f_hf_ratio",
+      "importance": 0.132,
+      "domain": "频域",
+      "since": "v1.1",
+      "rank_seed_min": 3,
+      "rank_seed_max": 3
+    },
+    {
+      "name": "t_kurt",
+      "importance": 0.0225,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 4,
+      "rank_seed_max": 4
+    },
+    {
+      "name": "t_zcr",
+      "importance": 0.0184,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 5,
+      "rank_seed_max": 5
+    },
+    {
+      "name": "f_centroid",
+      "importance": 0.0131,
+      "domain": "频域",
+      "since": "v1.0",
+      "rank_seed_min": 6,
+      "rank_seed_max": 7
+    },
+    {
+      "name": "t_absmean",
+      "importance": 0.0125,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 7,
+      "rank_seed_max": 8
+    },
+    {
+      "name": "t_std",
+      "importance": 0.0113,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 6,
+      "rank_seed_max": 13
+    },
+    {
+      "name": "t_crest",
+      "importance": 0.0104,
+      "domain": "时域",
+      "since": "v1.1",
+      "rank_seed_min": 9,
+      "rank_seed_max": 10
+    },
+    {
+      "name": "t_max",
+      "importance": 0.0103,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 9,
+      "rank_seed_max": 11
+    },
+    {
+      "name": "f_a8",
+      "importance": 0.0101,
+      "domain": "频域",
+      "since": "v1.0",
+      "rank_seed_min": 9,
+      "rank_seed_max": 11
+    },
+    {
+      "name": "t_rms",
+      "importance": 0.0099,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 7,
+      "rank_seed_max": 13
+    },
+    {
+      "name": "t_ptp",
+      "importance": 0.0076,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 13,
+      "rank_seed_max": 15
+    },
+    {
+      "name": "t_mean",
+      "importance": 0.0073,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 15,
+      "rank_seed_max": 16
+    },
+    {
+      "name": "t_impulse",
+      "importance": 0.0072,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 12,
+      "rank_seed_max": 18
+    },
+    {
+      "name": "t_shape",
+      "importance": 0.007,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 14,
+      "rank_seed_max": 18
+    },
+    {
+      "name": "t_clearance",
+      "importance": 0.0066,
+      "domain": "时域",
+      "since": "v1.1",
+      "rank_seed_min": 16,
+      "rank_seed_max": 17
+    },
+    {
+      "name": "t_skew",
+      "importance": 0.0064,
+      "domain": "时域",
+      "since": "v1.0",
+      "rank_seed_min": 12,
+      "rank_seed_max": 18
+    }
+  ],
+  "top1": "f_ratio2x",
+  "correlation_threshold": 0.95,
+  "correlation_pairs": [
+    {
+      "a": "t_std",
+      "b": "t_rms",
+      "r": 1.0,
+      "keep": "t_std",
+      "reason": "信息重复，保留先出现的 t_std"
+    },
+    {
+      "a": "t_std",
+      "b": "t_absmean",
+      "r": 0.9962,
+      "keep": "t_std",
+      "reason": "信息重复，保留先出现的 t_std"
+    },
+    {
+      "a": "t_rms",
+      "b": "t_absmean",
+      "r": 0.9962,
+      "keep": "t_rms",
+      "reason": "信息重复，保留先出现的 t_rms"
+    },
+    {
+      "a": "t_crest",
+      "b": "t_impulse",
+      "r": 0.993,
+      "keep": "t_crest",
+      "reason": "信息重复，保留先出现的 t_crest"
+    },
+    {
+      "a": "t_crest",
+      "b": "t_clearance",
+      "r": 0.9791,
+      "keep": "t_crest",
+      "reason": "信息重复，保留先出现的 t_crest"
+    },
+    {
+      "a": "t_impulse",
+      "b": "t_clearance",
+      "r": 0.9958,
+      "keep": "t_impulse",
+      "reason": "信息重复，保留先出现的 t_impulse"
+    }
+  ],
+  "screened_features": [
+    "t_mean",
+    "t_std",
+    "t_ptp",
+    "t_max",
+    "t_kurt",
+    "t_skew",
+    "t_crest",
+    "t_shape",
+    "t_zcr",
+    "f_a8",
+    "f_a16",
+    "f_ratio2x",
+    "f_centroid",
+    "f_hf_ratio"
+  ],
+  "ablation": {
+    "n_total": 18,
+    "n_cut": 6,
+    "keep": 12,
+    "cut_frac": 0.3,
+    "max_drop": 0.03,
+    "cut_pct_actual": 33.33,
+    "base": {
+      "acc": 0.975,
+      "f1": 0.9749,
+      "acc_spread": 0.0166,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "tail_set": [
+      "f_ratio2x",
+      "f_a16",
+      "f_hf_ratio",
+      "t_kurt",
+      "t_zcr",
+      "f_centroid",
+      "t_absmean",
+      "t_std",
+      "t_crest",
+      "t_max",
+      "f_a8",
+      "t_rms"
+    ],
+    "tail": {
+      "acc": 0.9778,
+      "f1": 0.9777,
+      "acc_spread": 0.0083,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "tail_drop": -0.0028,
+    "tail_drop_pct": -0.29,
+    "random": {
+      "acc": 0.9361,
+      "f1": 0.9356,
+      "acc_spread": 0.1972,
+      "n_sets": 5
+    },
+    "random_drop": 0.0389,
+    "head_set": [
+      "t_absmean",
+      "t_std",
+      "t_crest",
+      "t_max",
+      "f_a8",
+      "t_rms",
+      "t_ptp",
+      "t_mean",
+      "t_impulse",
+      "t_shape",
+      "t_clearance",
+      "t_skew"
+    ],
+    "head": {
+      "acc": 0.5028,
+      "f1": 0.4981,
+      "acc_spread": 0.0583,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "head_drop": 0.4722,
+    "pass": true,
+    "tail_better_than_random": true,
+    "head_collapses": true
+  },
+  "feature_sets": {
+    "D档最小集(前5特征)": {
+      "id": "min5",
+      "n_features": 5,
+      "features": [
+        "t_mean",
+        "t_std",
+        "t_rms",
+        "t_ptp",
+        "t_max"
+      ],
+      "acc": 0.4778,
+      "f1": 0.473,
+      "acc_spread": 0.1083,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "A·仅时域(13)": {
+      "id": "time",
+      "n_features": 13,
+      "features": [
+        "t_mean",
+        "t_std",
+        "t_rms",
+        "t_ptp",
+        "t_max",
+        "t_absmean",
+        "t_kurt",
+        "t_skew",
+        "t_crest",
+        "t_shape",
+        "t_impulse",
+        "t_clearance",
+        "t_zcr"
+      ],
+      "acc": 0.5583,
+      "f1": 0.5528,
+      "acc_spread": 0.075,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "B·仅频域(5)": {
+      "id": "freq",
+      "n_features": 5,
+      "features": [
+        "f_a8",
+        "f_a16",
+        "f_ratio2x",
+        "f_centroid",
+        "f_hf_ratio"
+      ],
+      "acc": 0.9778,
+      "f1": 0.9777,
+      "acc_spread": 0.0166,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "C·全集(18)": {
+      "id": "full",
+      "n_features": 18,
+      "features": [
+        "t_mean",
+        "t_std",
+        "t_rms",
+        "t_ptp",
+        "t_max",
+        "t_absmean",
+        "t_kurt",
+        "t_skew",
+        "t_crest",
+        "t_shape",
+        "t_impulse",
+        "t_clearance",
+        "t_zcr",
+        "f_a8",
+        "f_a16",
+        "f_ratio2x",
+        "f_centroid",
+        "f_hf_ratio"
+      ],
+      "acc": 0.975,
+      "f1": 0.9749,
+      "acc_spread": 0.0166,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "D·Top8 精选": {
+      "id": "topN",
+      "n_features": 8,
+      "features": [
+        "f_ratio2x",
+        "f_a16",
+        "f_hf_ratio",
+        "t_kurt",
+        "t_zcr",
+        "f_centroid",
+        "t_absmean",
+        "t_std"
+      ],
+      "acc": 0.9778,
+      "f1": 0.9777,
+      "acc_spread": 0.0083,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "E·Top3 极限集": {
+      "id": "top3",
+      "n_features": 3,
+      "features": [
+        "f_ratio2x",
+        "f_a16",
+        "f_hf_ratio"
+      ],
+      "acc": 0.9722,
+      "f1": 0.9721,
+      "acc_spread": 0.025,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    },
+    "F·相关性初筛后(14)": {
+      "id": "screened",
+      "n_features": 14,
+      "features": [
+        "t_mean",
+        "t_std",
+        "t_ptp",
+        "t_max",
+        "t_kurt",
+        "t_skew",
+        "t_crest",
+        "t_shape",
+        "t_zcr",
+        "f_a8",
+        "f_a16",
+        "f_ratio2x",
+        "f_centroid",
+        "f_hf_ratio"
+      ],
+      "acc": 0.975,
+      "f1": 0.9749,
+      "acc_spread": 0.0,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "folds": 4
+    }
+  },
+  "best_set": "B·仅频域(5)",
+  "new_feature_check": {
+    "top3": [
+      [
+        "f_ratio2x",
+        0.3838
+      ],
+      [
+        "f_a16",
+        0.3236
+      ],
+      [
+        "f_hf_ratio",
+        0.132
+      ]
+    ],
+    "new_in_top": [
+      [
+        "f_ratio2x",
+        0.3838
+      ],
+      [
+        "f_hf_ratio",
+        0.132
+      ]
+    ],
+    "n_new_in_top": 2,
+    "pass": true,
+    "meanings": {
+      "t_crest": "峰值因子——早期点蚀最灵的时域量",
+      "t_clearance": "裕度因子——对极窄冲击比峰值因子更敏感",
+      "f_ratio2x": "二倍频比——去掉整机转速大小后只看'磨损比例'",
+      "f_hf_ratio": "高频带能量占比——磨损冲击调制出的边带能量份额"
+    }
+  },
+  "leak_check": "全部特征只由本窗口 400 点采样算出，无跨窗口/事后结论列（B06）",
+  "code_style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "engine_real": true,
+    "n_files": 14,
+    "violations": 119,
+    "layout_violations": 52,
+    "structural_violations": 67,
+    "code_lines": 1838,
+    "rate": 93.53,
+    "min_pass": 70.0,
+    "by_rule": [
+      {
+        "code": "E501",
+        "count": 38,
+        "meaning": "行宽超 79 字符"
+      },
+      {
+        "code": "E128",
+        "count": 8,
+        "meaning": "续行少缩进（视觉对齐歧义）"
+      },
+      {
+        "code": "E127",
+        "count": 6,
+        "meaning": "续行多缩进（视觉对齐歧义）"
+      }
+    ],
+    "structural": {
+      "缺docstring": 67,
+      "命名非snake_case": 0,
+      "含制表符": 0,
+      "import星号": 0
+    },
+    "structural_clean": false,
+    "passes": true,
+    "fallback_note": "真实路径：pycodestyle 已安装并运行",
+    "per_file": [
+      {
+        "file": "run.py",
+        "code_lines": 18,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/feature_design48/__init__.py",
+        "code_lines": 6,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/feature_design48/cli.py",
+        "code_lines": 75,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 94.67
+      },
+      {
+        "file": "src/feature_design48/config.py",
+        "code_lines": 147,
+        "layout_violations": 2,
+        "structural_violations": 3,
+        "file_rate": 96.6
+      },
+      {
+        "file": "src/feature_design48/core.py",
+        "code_lines": 374,
+        "layout_violations": 6,
+        "structural_violations": 3,
+        "file_rate": 97.59
+      },
+      {
+        "file": "src/feature_design48/io_utils.py",
+        "code_lines": 56,
+        "layout_violations": 0,
+        "structural_violations": 4,
+        "file_rate": 92.86
+      },
+      {
+        "file": "src/feature_design48/pipeline.py",
+        "code_lines": 376,
+        "layout_violations": 27,
+        "structural_violations": 3,
+        "file_rate": 92.02
+      },
+      {
+        "file": "src/feature_design48/report.py",
+        "code_lines": 24,
+        "layout_violations": 0,
+        "structural_violations": 2,
+        "file_rate": 91.67
+      },
+      {
+        "file": "src/feature_design48/style.py",
+        "code_lines": 170,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 97.65
+      },
+      {
+        "file": "src/feature_design48/tiers.py",
+        "code_lines": 125,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "tests/__init__.py",
+        "code_lines": 1,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 0.0
+      },
+      {
+        "file": "tests/test_config.py",
+        "code_lines": 130,
+        "layout_violations": 2,
+        "structural_violations": 15,
+        "file_rate": 86.92
+      },
+      {
+        "file": "tests/test_core.py",
+        "code_lines": 133,
+        "layout_violations": 3,
+        "structural_violations": 20,
+        "file_rate": 82.71
+      },
+      {
+        "file": "tests/test_tiers.py",
+        "code_lines": 203,
+        "layout_violations": 6,
+        "structural_violations": 14,
+        "file_rate": 90.15
+      }
+    ],
+    "definition": "规范率 = 100 x (1 - (版式违规条数 + 结构违规条数) / 非空代码行数)；结构项 = 缺docstring/命名非snake_case/制表符/import* 四类计数之和"
+  },
+  "min_code_style": 70.0,
+  "tier_gates": {
+    "D": {
+      "min_features": 5,
+      "min_code_style_pct": 70.0
+    },
+    "C": {
+      "min_features": 10,
+      "dict_required_cols": 5
+    },
+    "B": {
+      "cut_frac": 0.3,
+      "max_acc_drop": 0.03,
+      "min_decision_chars": 120
+    },
+    "A": {
+      "top_n": 3,
+      "min_new_in_top": 1,
+      "min_explain_chars": 40
+    }
+  },
+  "claimed_tier": "优(A)",
+  "tier_verdict": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "key": "D",
+        "need": "5 特征表能跑通；代码规范率≥70%",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "最小集 5 特征跑通：4 折×3 种子 CV acc 0.4778；规范率 93.53%"
+      },
+      {
+        "tier": "良好(C)",
+        "key": "C",
+        "need": "≥10 特征且字典完整（名称/公式/含义/单位/范围五栏成文）",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "特征 18 个（线 10）；字典五栏成文 5/5，缺空 0 处"
+      },
+      {
+        "tier": "优秀(B)",
+        "key": "B",
+        "need": "特征砍 30% 性能不降（消融验证）；决策记录完整",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "尾部砍 33.3%（6 个）后 acc -0.0028（红线 ±0.030）；决策记录 295 字"
+      },
+      {
+        "tier": "优(A)",
+        "key": "A",
+        "need": "新特征进 Top3 且有物理解释",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "Top3 内 v1.1 新特征 2 个：f_ratio2x、f_hf_ratio；物理解释成文 46 字"
+      }
+    ],
+    "final": {
+      "D": true,
+      "C": true,
+      "B": true,
+      "A": true
+    },
+    "claimed": "优(A)",
+    "claimed_key": "A",
+    "measured": {
+      "min5_n_features": 5,
+      "min5_acc": 0.4778,
+      "n_features": 18,
+      "dict_missing_cells": 0,
+      "dict_cols": 5,
+      "cut_pct_actual": 33.33,
+      "tail_drop": -0.0028,
+      "decision_chars": 295,
+      "n_new_in_top": 2,
+      "explain_chars": 46
+    },
+    "evidence": {
+      "D": "最小集 5 特征跑通：4 折×3 种子 CV acc 0.4778；规范率 93.53%",
+      "C": "特征 18 个（线 10）；字典五栏成文 5/5，缺空 0 处",
+      "B": "尾部砍 33.3%（6 个）后 acc -0.0028（红线 ±0.030）；决策记录 295 字",
+      "A": "Top3 内 v1.1 新特征 2 个：f_ratio2x、f_hf_ratio；物理解释成文 46 字"
+    },
+    "gates": {
+      "D": {
+        "min_features": 5,
+        "min_code_style_pct": 70.0
+      },
+      "C": {
+        "min_features": 10,
+        "dict_required_cols": 5
+      },
+      "B": {
+        "cut_frac": 0.3,
+        "max_acc_drop": 0.03,
+        "min_decision_chars": 120
+      },
+      "A": {
+        "top_n": 3,
+        "min_new_in_top": 1,
+        "min_explain_chars": 40
+      }
+    },
+    "style_rate": 93.53,
+    "manual": [
+      "口头答辩：为什么比值型特征对工况免疫（企业元师傅签认）",
+      "解释说服力：新特征物理解释是否讲得通（程序只判成文+字数达标）",
+      "工单末页学习反思单三问（计入过程分 10%）"
+    ]
+  },
+  "tiers": {
+    "D": {
+      "要求": "5 特征表能跑通（最小集出指标）+ 代码规范率≥70%",
+      "实测": "前 5 特征（t_mean/t_std/t_rms/t_ptp/t_max）4 折×3 种子 CV 跑通：acc 0.4778 / macro-F1 0.4730——能跑通但分不开，说明'绝对幅值类'特征被工况淹没",
+      "实测2": "代码规范率 93.53%（pycodestyle（PEP8 官方参考实现），14 个文件 / 1838 行 / 119 条违规，线 70%）",
+      "达标": true
+    },
+    "C": {
+      "要求": "≥10 个特征且特征字典完整（名称/公式/含义/单位/范围）",
+      "实测": "特征 18 个（时域 13 + 频域 5）≥ 10；字典五栏缺空 0 处；相关性初筛剔除冗余对 6 组（|r|>0.95），精简后留 14 个",
+      "达标": true
+    },
+    "B": {
+      "要求": "特征砍掉 30% 后性能不降（消融验证）+ 决策记录完整",
+      "实测": "全集 acc 0.9750 → 砍尾部 6 个后 acc 0.9778（变化 -0.0028，红线 ±0.030）；随机砍同数量均值 0.9361（降 0.0389）；砍头部 6 个 acc 0.5028（降 0.4722）→ 榜可信；决策记录 295 字（线 120）",
+      "达标": true
+    },
+    "A": {
+      "要求": "新特征挤进 Top3 且有物理解释",
+      "实测": "Top3 = f_ratio2x(0.3838) / f_a16(0.3236) / f_hf_ratio(0.1320)；其中 v1.1 新增 2 个（f_ratio2x、f_hf_ratio），名次跨种子稳定（rank 1→1 / 3→3）；物理解释成文 46 字（线 40），解释见特征字典 meaning 栏",
+      "达标": true
+    }
+  }
 }

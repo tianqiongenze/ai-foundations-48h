@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """M2-1a 传统分类双解 starter（教学周3）：逻辑回归 vs 决策树同台，手写混淆矩阵
 
-运行: /opt/anaconda3/bin/python W19_classify_starter.py
+运行: /opt/anaconda3/bin/python W11_classify_starter.py
 数据: 合成泵站三态（正常/轴承磨损/叶轮堵塞），与工单M2-1a同源
 """
 import numpy as np

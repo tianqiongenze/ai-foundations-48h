@@ -1,9 +1,48 @@
 {
   "kb_size": 20,
-  "kb_source": "config\\knowledge_base.json",
+  "kb_source": "config/knowledge_base.json",
+  "retriever_channel": "内置 TF-IDF 余弦（jieba 分词，确定性离线）｜向量入库通道：chromadb 内存集合（自算 TF-IDF 向量，零网络）",
+  "store_note": "",
+  "threshold_experiment": {
+    "in_min": 0.2072,
+    "ood_max": 0.0,
+    "threshold": 0.1036,
+    "separable": true
+  },
+  "recall@3": {
+    "keyword": 1.0,
+    "tfidf": 1.0,
+    "rrf_fused": 1.0,
+    "n": 10
+  },
+  "ood": [
+    {
+      "query": "工装夹具的存放位置",
+      "refused": true,
+      "top1_sim": 0.0
+    },
+    {
+      "query": "食堂承包商的月度对账流程是什么",
+      "refused": true,
+      "top1_sim": 0.0
+    },
+    {
+      "query": "无人机螺旋桨间距的参数标准是多少",
+      "refused": true,
+      "top1_sim": 0.0
+    }
+  ],
+  "ood_refused": 3,
+  "ood_total": 3,
+  "contrast": {
+    "no_rag_hallucination": 3,
+    "rag_hallucination": 0,
+    "no_rag_citations": 0,
+    "rag_citations": 10,
+    "n_queries": 13
+  },
   "n_queries": 3,
   "grounded": 2,
-  "hallucination_rate": 0.3333,
   "rows": [
     {
       "query": "泵振动超标要看哪个标准",
@@ -58,5 +97,65 @@
       "grounded": false,
       "citations": []
     }
-  ]
+  ],
+  "style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "rate": 95.78,
+    "violations": 49,
+    "code_lines": 1161,
+    "layout_violations": 13,
+    "structural_violations": 36
+  },
+  "decision_record": {
+    "exists": true,
+    "n_sections": 4,
+    "missing": [],
+    "file": "07-ADR-001-架构决策记录.md"
+  },
+  "tiers": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "need": "幻觉案例≥2条；代码规范率≥70%",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "良好(C)",
+        "need": "检索≥80%有引用",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优秀(B)",
+        "need": "检索≥85%可溯源；决策记录完整",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优(A)",
+        "need": "检索≥90%加融合说明",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      }
+    ],
+    "claimed": "优(A)",
+    "manual": [
+      "企业元验收栏：功能可用□ 参数留痕□ 数据可信□（师傅签字）"
+    ],
+    "style_gate": 70.0,
+    "measured": {
+      "rate": 95.78,
+      "halluc_cases": 3,
+      "retrieve_rate": 1.0,
+      "cite_cov": 1.0,
+      "trace_rate": 1.0,
+      "fusion_lines": 2,
+      "decision_ok": true
+    }
+  }
 }

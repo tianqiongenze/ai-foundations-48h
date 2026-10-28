@@ -3,3 +3,27 @@ danger: 95.0
 unit: "c"
 seed: 7
 topk: 3
+
+# 工单 M5-1《多智能体检修调度》验收标准四档门槛（数字外置，逐字取自工单）
+tiers:
+  D:
+    name: 及格(D)
+    need: 基线数据可复现；代码规范率≥70%
+    style_min: 70.0
+  C:
+    name: 良好(C)
+    need: 正确率≥75%加说明书
+    acc_min: 0.75
+    manual_chars_min: 200
+  B:
+    name: 优秀(B)
+    need: 修复1个漏洞有证据；决策记录完整
+    wrong_before_min: 1
+  A:
+    name: 优(A)
+    need: 正确率≥90%或泛化实验
+    acc_a_min: 0.90
+    gen_episodes_min: 5
+
+# bandit 训练集数（train_bandit 读取；缺省 40）
+bandit_episodes: 40

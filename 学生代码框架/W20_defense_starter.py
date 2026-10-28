@@ -11,8 +11,8 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 LAYERS = [
     ("数据层", "W07_clean_starter.py", "脏数据→可信数据集：清洗规则与质量分"),
-    ("特征层", "W18_feature_starter.py", "特征字典：时域/频域双解与重要性证据"),
-    ("模型层", "W19_classify_starter.py", "双模型对比与混淆矩阵里的漏报账"),
+    ("特征层", "W10_feature_starter.py", "特征字典：时域/频域双解与重要性证据"),
+    ("模型层", "W11_classify_starter.py", "双模型对比与混淆矩阵里的漏报账"),
     ("服务层", "W17_prompt_starter.py", "三版Prompt对比：LLM回答质量+50%"),
     ("智能体层", "W19_multiagent_starter.py", "调度策略：FIFO→WSPT省20%加权流时间"),
 ]

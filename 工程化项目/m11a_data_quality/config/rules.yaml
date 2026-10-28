@@ -1,5 +1,33 @@
-warn: 80.0
-danger: 95.0
-unit: "c"
-seed: 7
-topk: 3
+# 工单 M1-1a《数据清洗与质量评估》规则外置 —— 改配置不改代码
+# 每个键都有真实读取方（pipeline.py / core.py），测试逐键断言生效
+seed: 7                     # 复现种子（core.make_dirty / 留出实验）
+unit: "c"                   # 温度单位口径（报告字段，量程按 ℃ 校验）
+topk: 3                     # 缺失率最高的前 K 列标为"重点关注列"（三清单）
+warn: 80.0                  # 质量分黄色警戒线：低于此分先查最大失分项
+danger: 95.0                # 缺失处理率红线（工单 C 层 ≥95%）
+n_rows: 300                 # 日志行数（D 层"行数不变"的基准）
+quality_target: 85.0        # 质量分目标线（工单 B 层）
+w_complete: 0.4             # 质量分权重·完整率
+w_accurate: 0.4             # 质量分权重·准确率(合规)——缺陷场景权重最高
+w_consistent: 0.2           # 质量分权重·一致率(唯一)——重复危害最小
+
+# 工单《M1-1a-数据清洗与质量评估》"四、验收标准"四档门槛（数字外置）。
+# 判定唯一入口是 src/data_quality48/tiers.py 的 gates()；数值必须与工单表
+# 逐字一致，tests/test_tiers.py 钉死这条口径——禁止为变绿下调门槛。
+# 上方 danger/quality_target 是报告展示线，与本段同值（一致性由测试保证）。
+tiers:
+  D:
+    max_temp_missing_cells: 0      # 温度列缺失格降为 0
+    require_rows_unchanged: true   # 且行数不变（不许 dropna 删行凑数）
+    min_code_style_pct: 70.0       # 代码规范率 ≥70%
+  C:
+    min_handle_rate_pct: 95.0      # 缺失处理率 ≥95%
+    min_lists: 3                   # 缺失/异常/重复三清单齐全
+  B:
+    min_quality_score: 85.0        # 质量评分 ≥85
+    min_reason_entries: 4          # 逐列策略理由完整（数值列数 4）
+    min_decision_chars: 120        # 决策记录段落存在且字数达标（口头答辩另计）
+  A:
+    require_pred_better: true      # 预测填充 MAE 必须实测低于均值填充
+    min_argument_chars: 200        # 论证段落存在且字数达标（说服力人工评）
+

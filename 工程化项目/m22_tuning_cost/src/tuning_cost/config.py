@@ -13,6 +13,26 @@ DEFAULTS: Dict[str, Any] = {
     "warn": 80.0, "danger": 95.0, "unit": "c", "seed": 7, "topk": 2,
 }
 
+# 工单 M2-2 四档门槛的兜底值（正常应从 rules.yaml 的 tiers: 段读出；
+# 配置文件缺段时用它并保命——门槛口径唯一出处仍是 YAML，代码不另立一套）
+TIER_DEFAULTS: Dict[str, Dict[str, Any]] = {
+    "D": {"style_min": 70.0},
+    "C": {"f1_min": 0.72, "limit_sec": 7200},
+    "B": {"curve_points_min": 4, "knee_gain_max": 0.01},
+    "A": {"f1_min": 0.88, "fast_gap_max": 0.02},
+}
+
+
+def merge_tiers(raw):
+    """rules.yaml 的 tiers: 段与 TIER_DEFAULTS 逐档合并（YAML 数字优先）。"""
+    raw = raw if isinstance(raw, dict) else {}
+    out = {}
+    for tier, defaults in TIER_DEFAULTS.items():
+        got = raw.get(tier)
+        got = got if isinstance(got, dict) else {}
+        out[tier] = dict(defaults, **got)
+    return out
+
 
 def _scalar(v):
     v = v.strip()
@@ -109,6 +129,7 @@ class Settings:
     seed: int = 7
     topk: int = 2
     items: List[Any] = field(default_factory=list)
+    tiers: Dict[str, Dict[str, Any]] = field(default_factory=dict)
     raw: Dict[str, Any] = field(default_factory=dict)
 
     @classmethod
@@ -120,7 +141,8 @@ class Settings:
         if not items:
             # 数据集键名不限 items：devices / raw_lines / fleet / readings / corpus ...
             for k, v in d.items():
-                if isinstance(v, list) and v and isinstance(v[0], (dict, str, int, float)):
+                if (isinstance(v, list) and v
+                        and isinstance(v[0], (dict, str, int, float))):
                     items = v
                     break
         if not items:
@@ -128,9 +150,10 @@ class Settings:
         if not isinstance(items, list):
             items = [items]
         return cls(
-            warn=float(d["warn"]), danger=float(d["danger"]), unit=str(d["unit"]),
+            warn=float(d["warn"]), danger=float(d["danger"]),
+            unit=str(d["unit"]),
             seed=int(d["seed"]), topk=int(d["topk"]),
-            items=items, raw=d,
+            items=items, tiers=merge_tiers(d.get("tiers")), raw=d,
         )
 
 

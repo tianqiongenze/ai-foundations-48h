@@ -3,3 +3,16 @@ danger: 95.0
 unit: "c"
 seed: 7
 topk: 3
+
+# 工单 M3-2 验收标准四档门槛（数字逐字取自工单"四、验收标准"；
+# tiers.py 的 DEFAULT_GATES 只是缺省回落，改这里即改判定线，不动代码）
+tiers:
+  D:
+    style_rate: 70.0
+  C:
+    ap: 0.60
+  B:
+    decisions: 1
+  A:
+    ap: 0.75
+    speedup_pct: 50.0

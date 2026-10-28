@@ -23,10 +23,12 @@ m11a_data_quality/
 │   ├── core.py             # 纯函数领域逻辑（零 IO，可单测）
 │   ├── io_utils.py         # CSV/JSON/原子写
 │   ├── report.py           # 报告渲染
-│   └── pipeline.py         # load → process → evaluate → report
+│   ├── pipeline.py         # load → process → evaluate → report
+│   └── cli.py              # 命令入口（[project.scripts] 真实落点，run.py 委托至此）
 ├── tests/
 │   ├── test_core.py        # 正常/边界/异常三档
-│   └── test_config.py      # 配置加载与校验
+│   ├── test_config.py      # 配置加载与"配置真被读取"
+│   └── test_tiers.py       # 工单 D/C/B/A 四档数值门禁
 └── docs/                   # 01~08 全套过程文档（见下）
 ```
 
@@ -49,7 +51,17 @@ m11a_data_quality/
 | ② 教师参考 | `../教师参考/` | 完成态参考（单文件示意） |
 | ③ **工程化项目（本目录）** | `../工程化项目/` | **企业级工程结构 + 全套流程资料** |
 
-## 五、验收口径
-- `python -m pytest -q` 全绿；`python run.py` 生成 `output/report.txt`
+## 五、验收口径（对齐工单 M1-1a 四档）
+| 档 | 工单标准 | 本项目实测（见 `output/report.txt`） |
+|---|---|---|
+| 及格 D | 温度列缺失率降为 0 且行数不变 | 9.00% → 0.00%，行数 300 → 300（缺失阶段零删行） |
+| 良好 C | 缺失处理率 ≥ 95% + 三清单齐全 | 100.00%；`missing_list/anomaly_list/duplicate_list.csv` |
+| 优秀 B | 质量分 ≥ 85 且理由完整、决策记录完整 | 93.60 → 99.07（0.4/0.4/0.2 加权，三率明细 + 逐列理由） |
+| 优 A | 预测填充优于均值且论证清楚 | MAE 0.6749℃ < 均值 2.6774℃（改善 74.79%，逐格胜率 86.1%） |
+
+工程口径：
+- `python run.py` 生成 `output/` 七件产物（report.txt、result.json、三清单 CSV、
+  audit_log.csv、cleaned.csv）；`python -m pytest -q` 全绿（39 用例，含四档门禁）
 - 配置修改不需改代码；二次运行结果一致（种子固定）
-- 过程文档 8 份齐全，可直接用于期末答辩的材料链
+- `pip install -e .` 后可用 `m11a_data_quality` 命令，与 `run.py` 同一入口实现
+- 过程文档 8 份齐全，`docs/01` 第 7 节为工单↔需求↔测试追踪矩阵

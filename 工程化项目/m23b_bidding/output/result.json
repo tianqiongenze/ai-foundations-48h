@@ -1,6 +1,479 @@
 {
+  "leakage_audit_leaky": {
+    "overlap_frac": 0.0,
+    "single_feat_cv": 0.9944,
+    "class_ranges": {
+      "健康": [
+        0.8621,
+        1.1567
+      ],
+      "退化": [
+        0.6568,
+        0.8332
+      ]
+    },
+    "leak_detected": true
+  },
+  "leakage_audit_fixed": {
+    "overlap_frac": 0.1796,
+    "single_feat_cv": 0.8556,
+    "class_ranges": {
+      "健康": [
+        0.5558,
+        0.844
+      ],
+      "退化": [
+        0.4739,
+        0.6223
+      ]
+    },
+    "leak_detected": false
+  },
   "image_line_cv": 1.0,
-  "series_line_cv": 0.9944,
-  "pick": "CNN 焊缝线",
-  "gap": 0.0056
+  "series_line_cv": 0.8556,
+  "selection_matrix": [
+    {
+      "line": "图像线",
+      "arm": "传统ML(RF)",
+      "engine": "sklearn",
+      "acc": 1.0,
+      "sec": 0.057
+    },
+    {
+      "line": "图像线",
+      "arm": "MLP",
+      "engine": "sklearn",
+      "acc": 0.6852,
+      "sec": 0.519
+    },
+    {
+      "line": "图像线",
+      "arm": "CNN(Conv2d)",
+      "engine": "torch",
+      "acc": 1.0,
+      "sec": 0.576
+    },
+    {
+      "line": "时序线",
+      "arm": "传统ML(RF)",
+      "engine": "sklearn",
+      "acc": 0.8175,
+      "sec": 0.102
+    },
+    {
+      "line": "时序线",
+      "arm": "MLP",
+      "engine": "sklearn",
+      "acc": 0.7037,
+      "sec": 0.032
+    },
+    {
+      "line": "时序线",
+      "arm": "LSTM(nn.LSTM)",
+      "engine": "torch",
+      "acc": 0.7407,
+      "sec": 1.155
+    }
+  ],
+  "cnn_arm": {
+    "engine": "torch",
+    "acc": 1.0,
+    "sec": 0.576,
+    "epochs": 40,
+    "note": "nn.Conv2d(1→8)+MaxPool+nn.Conv2d(8→16)+Dropout(0.2)×40 epochs"
+  },
+  "lstm_arm": {
+    "engine": "torch",
+    "acc": 0.7407,
+    "sec": 1.155,
+    "epochs": 60,
+    "note": "nn.LSTM(1→32) 取末步隐态 + Dropout0.2×60 epochs（窗口 win=16/stride=8）"
+  },
+  "reproducible": true,
+  "pick": {
+    "line": "图像线",
+    "arm": "传统ML(RF)",
+    "engine": "sklearn",
+    "acc": 1.0,
+    "sec": 0.057
+  },
+  "n_windows": 1260,
+  "window": {
+    "win": 16,
+    "stride": 8
+  },
+  "code_style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "engine_real": true,
+    "n_files": 14,
+    "violations": 73,
+    "layout_violations": 34,
+    "structural_violations": 39,
+    "code_lines": 1493,
+    "rate": 95.11,
+    "min_pass": 70.0,
+    "by_rule": [
+      {
+        "code": "E501",
+        "count": 30,
+        "meaning": "行宽超 79 字符"
+      },
+      {
+        "code": "E127",
+        "count": 2,
+        "meaning": "续行多缩进（视觉对齐歧义）"
+      },
+      {
+        "code": "E128",
+        "count": 2,
+        "meaning": "续行少缩进（视觉对齐歧义）"
+      }
+    ],
+    "structural": {
+      "缺docstring": 39,
+      "命名非snake_case": 0,
+      "含制表符": 0,
+      "import星号": 0
+    },
+    "structural_clean": false,
+    "passes": true,
+    "fallback_note": "真实路径：pycodestyle 已安装并运行",
+    "per_file": [
+      {
+        "file": "run.py",
+        "code_lines": 18,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/bidding_lines/__init__.py",
+        "code_lines": 6,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/bidding_lines/cli.py",
+        "code_lines": 73,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 94.52
+      },
+      {
+        "file": "src/bidding_lines/config.py",
+        "code_lines": 140,
+        "layout_violations": 2,
+        "structural_violations": 3,
+        "file_rate": 96.43
+      },
+      {
+        "file": "src/bidding_lines/core.py",
+        "code_lines": 249,
+        "layout_violations": 13,
+        "structural_violations": 6,
+        "file_rate": 92.37
+      },
+      {
+        "file": "src/bidding_lines/io_utils.py",
+        "code_lines": 56,
+        "layout_violations": 0,
+        "structural_violations": 4,
+        "file_rate": 92.86
+      },
+      {
+        "file": "src/bidding_lines/pipeline.py",
+        "code_lines": 337,
+        "layout_violations": 9,
+        "structural_violations": 1,
+        "file_rate": 97.03
+      },
+      {
+        "file": "src/bidding_lines/report.py",
+        "code_lines": 24,
+        "layout_violations": 0,
+        "structural_violations": 2,
+        "file_rate": 91.67
+      },
+      {
+        "file": "src/bidding_lines/style.py",
+        "code_lines": 170,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 97.65
+      },
+      {
+        "file": "src/bidding_lines/tiers.py",
+        "code_lines": 135,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "tests/__init__.py",
+        "code_lines": 1,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 0.0
+      },
+      {
+        "file": "tests/test_config.py",
+        "code_lines": 28,
+        "layout_violations": 1,
+        "structural_violations": 6,
+        "file_rate": 75.0
+      },
+      {
+        "file": "tests/test_core.py",
+        "code_lines": 90,
+        "layout_violations": 3,
+        "structural_violations": 8,
+        "file_rate": 87.78
+      },
+      {
+        "file": "tests/test_tiers.py",
+        "code_lines": 166,
+        "layout_violations": 0,
+        "structural_violations": 6,
+        "file_rate": 96.39
+      }
+    ],
+    "definition": "规范率 = 100 x (1 - (版式违规条数 + 结构违规条数) / 非空代码行数)；结构项 = 缺docstring/命名非snake_case/制表符/import* 四类计数之和"
+  },
+  "min_code_style": 70.0,
+  "tier_gates": {
+    "D": {
+      "require_reproducible": true,
+      "min_code_style_pct": 70.0
+    },
+    "C": {
+      "cnn_min_acc": 0.75,
+      "lstm_max_err": 0.25,
+      "require_real_engine": true
+    },
+    "B": {
+      "require_two_arm_compare": true,
+      "min_decision_chars": 120
+    },
+    "A": {
+      "min_matrix_rows": 4,
+      "require_weights": true,
+      "min_conclusion_chars": 20,
+      "weight_acc": 0.5,
+      "weight_speed": 0.3,
+      "weight_env": 0.2
+    }
+  },
+  "decision_matrix": {
+    "rows": [
+      {
+        "line": "图像线",
+        "arm": "传统ML(RF)",
+        "engine": "sklearn",
+        "acc": 1.0,
+        "sec": 0.057,
+        "s_perf": 1.0,
+        "s_speed": 0.5614,
+        "s_env": 1.0,
+        "score": 0.8684
+      },
+      {
+        "line": "时序线",
+        "arm": "MLP",
+        "engine": "sklearn",
+        "acc": 0.7037,
+        "sec": 0.032,
+        "s_perf": 0.7037,
+        "s_speed": 1.0,
+        "s_env": 1.0,
+        "score": 0.8518
+      },
+      {
+        "line": "时序线",
+        "arm": "传统ML(RF)",
+        "engine": "sklearn",
+        "acc": 0.8175,
+        "sec": 0.102,
+        "s_perf": 0.8175,
+        "s_speed": 0.3137,
+        "s_env": 1.0,
+        "score": 0.7029
+      },
+      {
+        "line": "图像线",
+        "arm": "CNN(Conv2d)",
+        "engine": "torch",
+        "acc": 1.0,
+        "sec": 0.576,
+        "s_perf": 1.0,
+        "s_speed": 0.0556,
+        "s_env": 0.5,
+        "score": 0.6167
+      },
+      {
+        "line": "图像线",
+        "arm": "MLP",
+        "engine": "sklearn",
+        "acc": 0.6852,
+        "sec": 0.519,
+        "s_perf": 0.6852,
+        "s_speed": 0.0617,
+        "s_env": 1.0,
+        "score": 0.5611
+      },
+      {
+        "line": "时序线",
+        "arm": "LSTM(nn.LSTM)",
+        "engine": "torch",
+        "acc": 0.7407,
+        "sec": 1.155,
+        "s_perf": 0.7407,
+        "s_speed": 0.0277,
+        "s_env": 0.5,
+        "score": 0.4787
+      }
+    ],
+    "weights": {
+      "acc": 0.5,
+      "speed": 0.3,
+      "env": 0.2
+    },
+    "weights_sum": 1.0,
+    "top": {
+      "line": "图像线",
+      "arm": "传统ML(RF)",
+      "engine": "sklearn",
+      "acc": 1.0,
+      "sec": 0.057,
+      "s_perf": 1.0,
+      "s_speed": 0.5614,
+      "s_env": 1.0,
+      "score": 0.8684
+    },
+    "conclusion": "结论：图像线-传统ML(RF) 加权总分 0.8684 居首（性能分 1.0000、速度分 0.5614、环境分 1.0000；权重 acc/speed/env=0.5/0.3/0.2，和=1.0）；次优 时序线-MLP（0.8518），差距 0.0166 由实测列可复算"
+  },
+  "decision_record_chars": 445,
+  "two_arm_real": true,
+  "claimed_tier": "优(A)",
+  "tier_verdict": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "key": "D",
+        "need": "指标可复现；代码规范率≥70%",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "同种子两次 RF 拟合留出 acc 一致（0.8175 vs 0.8175）；规范率 95.11%"
+      },
+      {
+        "tier": "良好(C)",
+        "key": "C",
+        "need": "CNN≥75% 或 LSTM 误差≤25%（仅认真卷积/真 LSTM 臂的实测数字）",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "CNN(torch) acc=1.0000（线≥0.75）｜LSTM(torch) 窗口错误率=0.2593（线≤0.25）——兜底臂数字不认（require_real_engine=True）"
+      },
+      {
+        "tier": "优秀(B)",
+        "key": "B",
+        "need": "CNN vs LSTM 两轮实测对比齐备；决策记录完整（竞标胜负/评委加分另人工）",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "两轮对比：两臂真引擎同口径实测（acc 差 +0.2593、秒差 -0.579s）；决策记录 445 字（线 120）"
+      },
+      {
+        "tier": "优(A)",
+        "key": "A",
+        "need": "选型决策矩阵：候选×权重×实测得分→结论",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "矩阵 6 行（线≥4）；权重 acc/speed/env=0.5/0.3/0.2 和=1.0；结论成文 136 字（线≥20）"
+      }
+    ],
+    "final": {
+      "D": true,
+      "C": true,
+      "B": true,
+      "A": true
+    },
+    "claimed": "优(A)",
+    "claimed_key": "A",
+    "measured": {
+      "reproducible": true,
+      "cnn_engine": "torch",
+      "cnn_acc": 1.0,
+      "lstm_engine": "torch",
+      "lstm_err": 0.2593,
+      "two_arm_real": true,
+      "decision_chars": 445,
+      "matrix_rows": 6,
+      "weights_sum": 1.0,
+      "conclusion_chars": 136
+    },
+    "evidence": {
+      "D": "同种子两次 RF 拟合留出 acc 一致（0.8175 vs 0.8175）；规范率 95.11%",
+      "C": "CNN(torch) acc=1.0000（线≥0.75）｜LSTM(torch) 窗口错误率=0.2593（线≤0.25）——兜底臂数字不认（require_real_engine=True）",
+      "B": "两轮对比：两臂真引擎同口径实测（acc 差 +0.2593、秒差 -0.579s）；决策记录 445 字（线 120）",
+      "A": "矩阵 6 行（线≥4）；权重 acc/speed/env=0.5/0.3/0.2 和=1.0；结论成文 136 字（线≥20）"
+    },
+    "gates": {
+      "D": {
+        "require_reproducible": true,
+        "min_code_style_pct": 70.0
+      },
+      "C": {
+        "cnn_min_acc": 0.75,
+        "lstm_max_err": 0.25,
+        "require_real_engine": true
+      },
+      "B": {
+        "require_two_arm_compare": true,
+        "min_decision_chars": 120
+      },
+      "A": {
+        "min_matrix_rows": 4,
+        "require_weights": true,
+        "min_conclusion_chars": 20,
+        "weight_acc": 0.5,
+        "weight_speed": 0.3,
+        "weight_env": 0.2
+      }
+    },
+    "style_rate": 95.11,
+    "manual": [
+      "赢得竞标或评委加分：现场评委裁决，程序无实测依据（工单 B 档人评半，证据包=选型决策矩阵+两轮对比+泄漏核查）",
+      "企业元验收栏师傅签认：功能可用/参数留痕/数据可信（学校元70%+企业元30%）",
+      "工单末页学习反思与答辩陈述（解释说服力人工评）"
+    ]
+  },
+  "tiers": {
+    "D": {
+      "要求": "指标可复现 + 代码规范率≥70%",
+      "实测": "同种子两次 RF 拟合留出 acc 完全一致=True（0.8175 vs 0.8175）；代码规范率 95.11%（pycodestyle（PEP8 官方参考实现），14 文件/1493 行/73 违规，线 70%）",
+      "达标": true
+    },
+    "C": {
+      "要求": "CNN≥75% 或 LSTM 误差≤25%（真卷积/真 LSTM 臂口径）",
+      "实测": "CNN(torch) 实测 acc 1.0000（线≥0.75）｜LSTM(torch) 实测窗口错误率 0.2593（线≤0.25）→ 至少一臂真引擎达标才算数",
+      "达标": true
+    },
+    "B": {
+      "要求": "CNN vs LSTM 两轮实测对比 + 决策记录完整（竞标胜负/评委加分人工）",
+      "实测": "两轮对比 齐备（acc 差 +0.2593、训练秒差 -0.579s，同留出集口径）；决策记录成文 445 字（线 120）；竞标胜负另人工",
+      "达标": true
+    },
+    "A": {
+      "要求": "给出选型决策矩阵（候选×权重×实测得分→结论，≥4 行、权重和=1）",
+      "实测": "决策矩阵实测 6 行×3 准则（性能/速度/环境全由实测换算），权重和 1.0，结论：结论：图像线-传统ML(RF) 加权总分 0.8684 居首（性能分 1.0000、速度分 0.5614、环境分 1.0000；权重 acc/speed/env=0.5/0.3/0.2，和=1.0）；次优 时序线-MLP（0.8518），差距 0.0166 由实测列可复算",
+      "达标": true
+    }
+  }
 }

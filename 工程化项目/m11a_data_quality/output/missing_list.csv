@@ -1,0 +1,5 @@
+column,n_missing,missing_rate_pct,max_consecutive,mechanism,watch
+pressure,103,34.33,12,成片缺失(断电/断线),True
+temp,27,9.0,1,随机散点缺失,True
+vib,19,6.33,1,随机散点缺失,True
+current,6,2.0,1,随机散点缺失,False

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """M1-1b 特征设计与优化 starter（教学周2）：时域+频域双解造特征，用特征重要性证明设计值钱
 
-运行: /opt/anaconda3/bin/python W18_feature_starter.py
+运行: /opt/anaconda3/bin/python W10_feature_starter.py
 数据: 合成泵振动（正常/轴承磨损两类，磨损类8Hz特征频率抬升——和工单剧情同源）
 """
 import numpy as np

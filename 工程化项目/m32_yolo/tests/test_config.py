@@ -6,7 +6,8 @@ import pytest
 
 from yolo_detect import config as C
 
-CFG_TEXT = "warn: 10" + chr(10) + "flag: true" + chr(10) + 'name: "x"' + chr(10)
+CFG_TEXT = ("warn: 10" + chr(10) + "flag: true" + chr(10)
+            + 'name: "x"' + chr(10))
 
 
 def test_load_default_config():

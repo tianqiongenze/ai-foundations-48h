@@ -3,17 +3,23 @@
     "随机": {
       "reward": -413.0,
       "accuracy": 0.2276,
-      "downtime": 125
+      "downtime": 125,
+      "correct": 33,
+      "wrong": 112
     },
     "奖励导向": {
       "reward": -90.0,
       "accuracy": 0.19,
-      "downtime": 42
+      "downtime": 42,
+      "correct": 38,
+      "wrong": 162
     },
     "安全优先": {
       "reward": -738.0,
       "accuracy": 1.0,
-      "downtime": 42
+      "downtime": 42,
+      "correct": 38,
+      "wrong": 0
     }
   },
   "sensitivity": [
@@ -32,5 +38,117 @@
       -624.0,
       1.0
     ]
-  ]
+  ],
+  "reproducible": true,
+  "loophole": {
+    "before": {
+      "reward": -90.0,
+      "accuracy": 0.19,
+      "downtime": 42,
+      "correct": 38,
+      "wrong": 162
+    },
+    "after": {
+      "reward": -1224.0,
+      "accuracy": 0.19,
+      "downtime": 42,
+      "correct": 38,
+      "wrong": 162
+    },
+    "hack_gain_before": 4.0,
+    "hack_gain_after": -3.0
+  },
+  "tiers": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "need": "基线数据可复现；代码规范率≥70%",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "良好(C)",
+        "need": "正确率≥75%加说明书",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优秀(B)",
+        "need": "修复1个漏洞有证据；决策记录完整",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优(A)",
+        "need": "正确率≥90%或泛化实验",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      }
+    ],
+    "claimed": "优(A)",
+    "manual": [
+      "企业元验收栏：功能可用□ 参数留痕□ 数据可信□（师傅签字）"
+    ],
+    "style_gate": 70.0,
+    "measured": {
+      "rate": 95.33,
+      "reproducible": true,
+      "acc_best": 1.0,
+      "manual_chars": 620,
+      "wrong_before": 162,
+      "reward_delta": -1134.0,
+      "decision_ok": true,
+      "unseen_acc": 1.0,
+      "gen_episodes": 10
+    }
+  },
+  "style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "rate": 95.33,
+    "violations": 50,
+    "code_lines": 1070,
+    "layout_violations": 14,
+    "structural_violations": 36
+  },
+  "manual_doc": {
+    "exists": true,
+    "chars": 620,
+    "file": "05-运行手册.md"
+  },
+  "decision_record": {
+    "exists": true,
+    "n_sections": 4,
+    "missing": [],
+    "file": "07-ADR-001-架构决策记录.md"
+  },
+  "bandit": {
+    "curve_head_reward": -829.0,
+    "curve_tail_reward": -741.5,
+    "curve_head_acc": 0.5498,
+    "curve_tail_acc": 0.9147,
+    "pulls": 11000,
+    "explores": 729,
+    "exploits": 10271,
+    "train_eval": {
+      "reward": -712.0,
+      "accuracy": 1.0,
+      "downtime": 203,
+      "correct": 196,
+      "wrong": 0,
+      "episodes": 5
+    },
+    "unseen_eval": {
+      "reward": -725.1,
+      "accuracy": 1.0,
+      "downtime": 434,
+      "correct": 386,
+      "wrong": 0,
+      "episodes": 10
+    },
+    "q_buckets": 10
+  }
 }

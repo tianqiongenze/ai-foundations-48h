@@ -30,6 +30,419 @@
           "轴承磨损": 2,
           "叶轮堵塞": 21
         }
+      },
+      "prf": {
+        "per_class": {
+          "正常": {
+            "precision": 0.65,
+            "recall": 0.52,
+            "f1": 0.5778,
+            "support": 25
+          },
+          "轴承磨损": {
+            "precision": 0.6786,
+            "recall": 0.76,
+            "f1": 0.717,
+            "support": 25
+          },
+          "叶轮堵塞": {
+            "precision": 0.7778,
+            "recall": 0.84,
+            "f1": 0.8077,
+            "support": 25
+          }
+        },
+        "caliber": {
+          "scoring": "precision_recall_fscore_support",
+          "average": "macro",
+          "n_labels": 3,
+          "zero_division": 0
+        },
+        "macro": {
+          "precision": 0.7021,
+          "recall": 0.7067,
+          "f1": 0.7008
+        }
+      },
+      "threshold_sweep": {
+        "正常": {
+          "rows": [
+            {
+              "threshold": 0.05,
+              "precision": 0.3788,
+              "recall": 1.0,
+              "f1": 0.5495
+            },
+            {
+              "threshold": 0.1,
+              "precision": 0.4237,
+              "recall": 1.0,
+              "f1": 0.5952
+            },
+            {
+              "threshold": 0.15,
+              "precision": 0.4706,
+              "recall": 0.96,
+              "f1": 0.6316
+            },
+            {
+              "threshold": 0.2,
+              "precision": 0.4783,
+              "recall": 0.88,
+              "f1": 0.6197
+            },
+            {
+              "threshold": 0.25,
+              "precision": 0.5641,
+              "recall": 0.88,
+              "f1": 0.6875
+            },
+            {
+              "threshold": 0.3,
+              "precision": 0.5789,
+              "recall": 0.88,
+              "f1": 0.6984
+            },
+            {
+              "threshold": 0.35,
+              "precision": 0.6,
+              "recall": 0.72,
+              "f1": 0.6545
+            },
+            {
+              "threshold": 0.4,
+              "precision": 0.625,
+              "recall": 0.6,
+              "f1": 0.6122
+            },
+            {
+              "threshold": 0.45,
+              "precision": 0.75,
+              "recall": 0.6,
+              "f1": 0.6667
+            },
+            {
+              "threshold": 0.5,
+              "precision": 0.7059,
+              "recall": 0.48,
+              "f1": 0.5714
+            },
+            {
+              "threshold": 0.55,
+              "precision": 0.7692,
+              "recall": 0.4,
+              "f1": 0.5263
+            },
+            {
+              "threshold": 0.6,
+              "precision": 0.8182,
+              "recall": 0.36,
+              "f1": 0.5
+            },
+            {
+              "threshold": 0.65,
+              "precision": 0.8571,
+              "recall": 0.24,
+              "f1": 0.375
+            },
+            {
+              "threshold": 0.7,
+              "precision": 0.8571,
+              "recall": 0.24,
+              "f1": 0.375
+            },
+            {
+              "threshold": 0.75,
+              "precision": 0.8,
+              "recall": 0.16,
+              "f1": 0.2667
+            },
+            {
+              "threshold": 0.8,
+              "precision": 0.8,
+              "recall": 0.16,
+              "f1": 0.2667
+            },
+            {
+              "threshold": 0.85,
+              "precision": 0.6667,
+              "recall": 0.08,
+              "f1": 0.1429
+            },
+            {
+              "threshold": 0.9,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            {
+              "threshold": 0.95,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          ],
+          "best": {
+            "threshold": 0.3,
+            "precision": 0.5789,
+            "recall": 0.88,
+            "f1": 0.6984
+          },
+          "pos_label": "正常",
+          "binary_caliber": "OvR 一对其余"
+        },
+        "轴承磨损": {
+          "rows": [
+            {
+              "threshold": 0.05,
+              "precision": 0.4386,
+              "recall": 1.0,
+              "f1": 0.6098
+            },
+            {
+              "threshold": 0.1,
+              "precision": 0.4902,
+              "recall": 1.0,
+              "f1": 0.6579
+            },
+            {
+              "threshold": 0.15,
+              "precision": 0.5217,
+              "recall": 0.96,
+              "f1": 0.6761
+            },
+            {
+              "threshold": 0.2,
+              "precision": 0.5581,
+              "recall": 0.96,
+              "f1": 0.7059
+            },
+            {
+              "threshold": 0.25,
+              "precision": 0.6154,
+              "recall": 0.96,
+              "f1": 0.75
+            },
+            {
+              "threshold": 0.3,
+              "precision": 0.6216,
+              "recall": 0.92,
+              "f1": 0.7419
+            },
+            {
+              "threshold": 0.35,
+              "precision": 0.6216,
+              "recall": 0.92,
+              "f1": 0.7419
+            },
+            {
+              "threshold": 0.4,
+              "precision": 0.6111,
+              "recall": 0.88,
+              "f1": 0.7213
+            },
+            {
+              "threshold": 0.45,
+              "precision": 0.6429,
+              "recall": 0.72,
+              "f1": 0.6792
+            },
+            {
+              "threshold": 0.5,
+              "precision": 0.7391,
+              "recall": 0.68,
+              "f1": 0.7083
+            },
+            {
+              "threshold": 0.55,
+              "precision": 0.7895,
+              "recall": 0.6,
+              "f1": 0.6818
+            },
+            {
+              "threshold": 0.6,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            },
+            {
+              "threshold": 0.65,
+              "precision": 0.8571,
+              "recall": 0.48,
+              "f1": 0.6154
+            },
+            {
+              "threshold": 0.7,
+              "precision": 0.8462,
+              "recall": 0.44,
+              "f1": 0.5789
+            },
+            {
+              "threshold": 0.75,
+              "precision": 0.8182,
+              "recall": 0.36,
+              "f1": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.24,
+              "f1": 0.3871
+            },
+            {
+              "threshold": 0.85,
+              "precision": 1.0,
+              "recall": 0.2,
+              "f1": 0.3333
+            },
+            {
+              "threshold": 0.9,
+              "precision": 1.0,
+              "recall": 0.12,
+              "f1": 0.2143
+            },
+            {
+              "threshold": 0.95,
+              "precision": 1.0,
+              "recall": 0.08,
+              "f1": 0.1481
+            }
+          ],
+          "best": {
+            "threshold": 0.25,
+            "precision": 0.6154,
+            "recall": 0.96,
+            "f1": 0.75
+          },
+          "pos_label": "轴承磨损",
+          "binary_caliber": "OvR 一对其余"
+        },
+        "叶轮堵塞": {
+          "rows": [
+            {
+              "threshold": 0.05,
+              "precision": 0.4902,
+              "recall": 1.0,
+              "f1": 0.6579
+            },
+            {
+              "threshold": 0.1,
+              "precision": 0.5455,
+              "recall": 0.96,
+              "f1": 0.6957
+            },
+            {
+              "threshold": 0.15,
+              "precision": 0.5946,
+              "recall": 0.88,
+              "f1": 0.7097
+            },
+            {
+              "threshold": 0.2,
+              "precision": 0.6286,
+              "recall": 0.88,
+              "f1": 0.7333
+            },
+            {
+              "threshold": 0.25,
+              "precision": 0.6471,
+              "recall": 0.88,
+              "f1": 0.7458
+            },
+            {
+              "threshold": 0.3,
+              "precision": 0.6875,
+              "recall": 0.88,
+              "f1": 0.7719
+            },
+            {
+              "threshold": 0.35,
+              "precision": 0.7241,
+              "recall": 0.84,
+              "f1": 0.7778
+            },
+            {
+              "threshold": 0.4,
+              "precision": 0.75,
+              "recall": 0.84,
+              "f1": 0.7925
+            },
+            {
+              "threshold": 0.45,
+              "precision": 0.8077,
+              "recall": 0.84,
+              "f1": 0.8235
+            },
+            {
+              "threshold": 0.5,
+              "precision": 0.84,
+              "recall": 0.84,
+              "f1": 0.84
+            },
+            {
+              "threshold": 0.55,
+              "precision": 0.84,
+              "recall": 0.84,
+              "f1": 0.84
+            },
+            {
+              "threshold": 0.6,
+              "precision": 0.8333,
+              "recall": 0.8,
+              "f1": 0.8163
+            },
+            {
+              "threshold": 0.65,
+              "precision": 0.85,
+              "recall": 0.68,
+              "f1": 0.7556
+            },
+            {
+              "threshold": 0.7,
+              "precision": 1.0,
+              "recall": 0.56,
+              "f1": 0.7179
+            },
+            {
+              "threshold": 0.75,
+              "precision": 1.0,
+              "recall": 0.52,
+              "f1": 0.6842
+            },
+            {
+              "threshold": 0.8,
+              "precision": 1.0,
+              "recall": 0.4,
+              "f1": 0.5714
+            },
+            {
+              "threshold": 0.85,
+              "precision": 1.0,
+              "recall": 0.36,
+              "f1": 0.5294
+            },
+            {
+              "threshold": 0.9,
+              "precision": 1.0,
+              "recall": 0.24,
+              "f1": 0.3871
+            },
+            {
+              "threshold": 0.95,
+              "precision": 1.0,
+              "recall": 0.2,
+              "f1": 0.3333
+            }
+          ],
+          "best": {
+            "threshold": 0.5,
+            "precision": 0.84,
+            "recall": 0.84,
+            "f1": 0.84
+          },
+          "pos_label": "叶轮堵塞",
+          "binary_caliber": "OvR 一对其余"
+        }
       }
     },
     "DT": {
@@ -55,8 +468,617 @@
           "轴承磨损": 2,
           "叶轮堵塞": 17
         }
+      },
+      "prf": {
+        "per_class": {
+          "正常": {
+            "precision": 0.6,
+            "recall": 0.6,
+            "f1": 0.6,
+            "support": 25
+          },
+          "轴承磨损": {
+            "precision": 0.7,
+            "recall": 0.84,
+            "f1": 0.7636,
+            "support": 25
+          },
+          "叶轮堵塞": {
+            "precision": 0.85,
+            "recall": 0.68,
+            "f1": 0.7556,
+            "support": 25
+          }
+        },
+        "caliber": {
+          "scoring": "precision_recall_fscore_support",
+          "average": "macro",
+          "n_labels": 3,
+          "zero_division": 0
+        },
+        "macro": {
+          "precision": 0.7167,
+          "recall": 0.7067,
+          "f1": 0.7064
+        }
+      },
+      "threshold_sweep": {
+        "正常": {
+          "rows": [
+            {
+              "threshold": 0.05,
+              "precision": 0.4318,
+              "recall": 0.76,
+              "f1": 0.5507
+            },
+            {
+              "threshold": 0.1,
+              "precision": 0.4318,
+              "recall": 0.76,
+              "f1": 0.5507
+            },
+            {
+              "threshold": 0.15,
+              "precision": 0.4318,
+              "recall": 0.76,
+              "f1": 0.5507
+            },
+            {
+              "threshold": 0.2,
+              "precision": 0.4419,
+              "recall": 0.76,
+              "f1": 0.5588
+            },
+            {
+              "threshold": 0.25,
+              "precision": 0.5,
+              "recall": 0.76,
+              "f1": 0.6032
+            },
+            {
+              "threshold": 0.3,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            {
+              "threshold": 0.35,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            {
+              "threshold": 0.4,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            {
+              "threshold": 0.45,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            {
+              "threshold": 0.5,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            {
+              "threshold": 0.55,
+              "precision": 0.65,
+              "recall": 0.52,
+              "f1": 0.5778
+            },
+            {
+              "threshold": 0.6,
+              "precision": 0.65,
+              "recall": 0.52,
+              "f1": 0.5778
+            },
+            {
+              "threshold": 0.65,
+              "precision": 0.65,
+              "recall": 0.52,
+              "f1": 0.5778
+            },
+            {
+              "threshold": 0.7,
+              "precision": 0.5833,
+              "recall": 0.28,
+              "f1": 0.3784
+            },
+            {
+              "threshold": 0.75,
+              "precision": 0.5833,
+              "recall": 0.28,
+              "f1": 0.3784
+            },
+            {
+              "threshold": 0.8,
+              "precision": 0.5833,
+              "recall": 0.28,
+              "f1": 0.3784
+            },
+            {
+              "threshold": 0.85,
+              "precision": 0.7,
+              "recall": 0.28,
+              "f1": 0.4
+            },
+            {
+              "threshold": 0.9,
+              "precision": 0.7,
+              "recall": 0.28,
+              "f1": 0.4
+            },
+            {
+              "threshold": 0.95,
+              "precision": 0.7,
+              "recall": 0.28,
+              "f1": 0.4
+            }
+          ],
+          "best": {
+            "threshold": 0.25,
+            "precision": 0.5,
+            "recall": 0.76,
+            "f1": 0.6032
+          },
+          "pos_label": "正常",
+          "binary_caliber": "OvR 一对其余"
+        },
+        "轴承磨损": {
+          "rows": [
+            {
+              "threshold": 0.05,
+              "precision": 0.5641,
+              "recall": 0.88,
+              "f1": 0.6875
+            },
+            {
+              "threshold": 0.1,
+              "precision": 0.6286,
+              "recall": 0.88,
+              "f1": 0.7333
+            },
+            {
+              "threshold": 0.15,
+              "precision": 0.6286,
+              "recall": 0.88,
+              "f1": 0.7333
+            },
+            {
+              "threshold": 0.2,
+              "precision": 0.6286,
+              "recall": 0.88,
+              "f1": 0.7333
+            },
+            {
+              "threshold": 0.25,
+              "precision": 0.6286,
+              "recall": 0.88,
+              "f1": 0.7333
+            },
+            {
+              "threshold": 0.3,
+              "precision": 0.7097,
+              "recall": 0.88,
+              "f1": 0.7857
+            },
+            {
+              "threshold": 0.35,
+              "precision": 0.7097,
+              "recall": 0.88,
+              "f1": 0.7857
+            },
+            {
+              "threshold": 0.4,
+              "precision": 0.7097,
+              "recall": 0.88,
+              "f1": 0.7857
+            },
+            {
+              "threshold": 0.45,
+              "precision": 0.7097,
+              "recall": 0.88,
+              "f1": 0.7857
+            },
+            {
+              "threshold": 0.5,
+              "precision": 0.7097,
+              "recall": 0.88,
+              "f1": 0.7857
+            },
+            {
+              "threshold": 0.55,
+              "precision": 0.7,
+              "recall": 0.84,
+              "f1": 0.7636
+            },
+            {
+              "threshold": 0.6,
+              "precision": 0.7,
+              "recall": 0.84,
+              "f1": 0.7636
+            },
+            {
+              "threshold": 0.65,
+              "precision": 0.7,
+              "recall": 0.84,
+              "f1": 0.7636
+            },
+            {
+              "threshold": 0.7,
+              "precision": 0.7,
+              "recall": 0.84,
+              "f1": 0.7636
+            },
+            {
+              "threshold": 0.75,
+              "precision": 0.8095,
+              "recall": 0.68,
+              "f1": 0.7391
+            },
+            {
+              "threshold": 0.8,
+              "precision": 0.75,
+              "recall": 0.48,
+              "f1": 0.5854
+            },
+            {
+              "threshold": 0.85,
+              "precision": 0.7333,
+              "recall": 0.44,
+              "f1": 0.55
+            },
+            {
+              "threshold": 0.9,
+              "precision": 0.7333,
+              "recall": 0.44,
+              "f1": 0.55
+            },
+            {
+              "threshold": 0.95,
+              "precision": 0.7333,
+              "recall": 0.44,
+              "f1": 0.55
+            }
+          ],
+          "best": {
+            "threshold": 0.3,
+            "precision": 0.7097,
+            "recall": 0.88,
+            "f1": 0.7857
+          },
+          "pos_label": "轴承磨损",
+          "binary_caliber": "OvR 一对其余"
+        },
+        "叶轮堵塞": {
+          "rows": [
+            {
+              "threshold": 0.05,
+              "precision": 0.6471,
+              "recall": 0.88,
+              "f1": 0.7458
+            },
+            {
+              "threshold": 0.1,
+              "precision": 0.6471,
+              "recall": 0.88,
+              "f1": 0.7458
+            },
+            {
+              "threshold": 0.15,
+              "precision": 0.6471,
+              "recall": 0.88,
+              "f1": 0.7458
+            },
+            {
+              "threshold": 0.2,
+              "precision": 0.6471,
+              "recall": 0.88,
+              "f1": 0.7458
+            },
+            {
+              "threshold": 0.25,
+              "precision": 0.625,
+              "recall": 0.8,
+              "f1": 0.7018
+            },
+            {
+              "threshold": 0.3,
+              "precision": 0.6429,
+              "recall": 0.72,
+              "f1": 0.6792
+            },
+            {
+              "threshold": 0.35,
+              "precision": 0.85,
+              "recall": 0.68,
+              "f1": 0.7556
+            },
+            {
+              "threshold": 0.4,
+              "precision": 0.85,
+              "recall": 0.68,
+              "f1": 0.7556
+            },
+            {
+              "threshold": 0.45,
+              "precision": 0.85,
+              "recall": 0.68,
+              "f1": 0.7556
+            },
+            {
+              "threshold": 0.5,
+              "precision": 0.85,
+              "recall": 0.68,
+              "f1": 0.7556
+            },
+            {
+              "threshold": 0.55,
+              "precision": 0.85,
+              "recall": 0.68,
+              "f1": 0.7556
+            },
+            {
+              "threshold": 0.6,
+              "precision": 0.85,
+              "recall": 0.68,
+              "f1": 0.7556
+            },
+            {
+              "threshold": 0.65,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            },
+            {
+              "threshold": 0.7,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            },
+            {
+              "threshold": 0.75,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            },
+            {
+              "threshold": 0.8,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            },
+            {
+              "threshold": 0.85,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            },
+            {
+              "threshold": 0.9,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            },
+            {
+              "threshold": 0.95,
+              "precision": 0.8125,
+              "recall": 0.52,
+              "f1": 0.6341
+            }
+          ],
+          "best": {
+            "threshold": 0.35,
+            "precision": 0.85,
+            "recall": 0.68,
+            "f1": 0.7556
+          },
+          "pos_label": "叶轮堵塞",
+          "binary_caliber": "OvR 一对其余"
+        }
       }
     }
   },
-  "acc_gap": 0.0
+  "acc_gap": 0.0,
+  "best_by_f1": "DT",
+  "gates": {
+    "D": {
+      "style_min": 70.0
+    },
+    "C": {
+      "f1_min": 0.7
+    },
+    "B": {
+      "sweep_points_min": 19
+    },
+    "A": {
+      "f1_min": 0.85
+    }
+  },
+  "code_style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "engine_real": true,
+    "n_files": 14,
+    "violations": 38,
+    "layout_violations": 4,
+    "structural_violations": 34,
+    "code_lines": 1005,
+    "rate": 96.22,
+    "min_pass": 70.0,
+    "by_rule": [
+      {
+        "code": "E501",
+        "count": 2,
+        "meaning": "行宽超 79 字符"
+      },
+      {
+        "code": "E128",
+        "count": 2,
+        "meaning": "续行少缩进（视觉对齐歧义）"
+      }
+    ],
+    "structural": {
+      "缺docstring": 34,
+      "命名非snake_case": 0,
+      "含制表符": 0,
+      "import星号": 0
+    },
+    "structural_clean": false,
+    "passes": true,
+    "fallback_note": "真实路径：pycodestyle 已安装并运行",
+    "per_file": [
+      {
+        "file": "run.py",
+        "code_lines": 18,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/classic_clf/__init__.py",
+        "code_lines": 7,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/classic_clf/cli.py",
+        "code_lines": 68,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 98.53
+      },
+      {
+        "file": "src/classic_clf/config.py",
+        "code_lines": 153,
+        "layout_violations": 0,
+        "structural_violations": 3,
+        "file_rate": 98.04
+      },
+      {
+        "file": "src/classic_clf/core.py",
+        "code_lines": 86,
+        "layout_violations": 0,
+        "structural_violations": 3,
+        "file_rate": 96.51
+      },
+      {
+        "file": "src/classic_clf/io_utils.py",
+        "code_lines": 56,
+        "layout_violations": 0,
+        "structural_violations": 4,
+        "file_rate": 92.86
+      },
+      {
+        "file": "src/classic_clf/pipeline.py",
+        "code_lines": 154,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 99.35
+      },
+      {
+        "file": "src/classic_clf/report.py",
+        "code_lines": 24,
+        "layout_violations": 0,
+        "structural_violations": 2,
+        "file_rate": 91.67
+      },
+      {
+        "file": "src/classic_clf/style.py",
+        "code_lines": 170,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 97.65
+      },
+      {
+        "file": "src/classic_clf/tiers.py",
+        "code_lines": 74,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "tests/__init__.py",
+        "code_lines": 1,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 0.0
+      },
+      {
+        "file": "tests/test_config.py",
+        "code_lines": 28,
+        "layout_violations": 1,
+        "structural_violations": 6,
+        "file_rate": 75.0
+      },
+      {
+        "file": "tests/test_core.py",
+        "code_lines": 75,
+        "layout_violations": 0,
+        "structural_violations": 8,
+        "file_rate": 89.33
+      },
+      {
+        "file": "tests/test_tiers.py",
+        "code_lines": 91,
+        "layout_violations": 0,
+        "structural_violations": 4,
+        "file_rate": 95.6
+      }
+    ],
+    "definition": "规范率 = 100 x (1 - (版式违规条数 + 结构违规条数) / 非空代码行数)；结构项 = 缺docstring/命名非snake_case/制表符/import* 四类计数之和"
+  },
+  "tier_verdict": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "gate": 70.0,
+        "need": "基线accuracy输出；代码规范率≥70%",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "良好(C)",
+        "gate": 70.0,
+        "need": "F1≥0.70口径正确",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优秀(B)",
+        "gate": 70.0,
+        "need": "给出阈值方案与理由；决策记录完整",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优(A)",
+        "gate": 70.0,
+        "need": "F1≥0.85或方案论证充分",
+        "functional": false,
+        "style_ok": true,
+        "pass": false
+      }
+    ],
+    "claimed": "优秀(B)",
+    "summary": "基线acc LR 0.707/DT 0.707｜最优 DT macro F1 实测 0.706（口径 average=macro，OvR pos_label 逐类登记）｜阈值曲线每类最少19 点（共 57 点）｜决策记录完整（result.json 回读校验）｜实测规范率 96.22%",
+    "measured": {
+      "lr_acc": 0.7067,
+      "dt_acc": 0.7067,
+      "macro_f1": 0.7064,
+      "caliber_ok": true,
+      "sweep_min_points": 19,
+      "sweep_total_points": 57,
+      "decision_ok": true,
+      "style_rate": 96.22
+    }
+  }
 }

@@ -1,9 +1,554 @@
 {
+  "seed": 7,
+  "weights": [
+    0.4,
+    0.4,
+    0.2
+  ],
+  "quality_target": 85.0,
+  "warn_line": 80.0,
+  "missing_handle_redline": 95.0,
+  "topk": 3,
   "rows_before": 300,
-  "rows_after": 275,
-  "removed": 25,
-  "quality": 0.8403,
-  "py_rows": 275,
-  "pd_rows": 275,
-  "consistent": true
+  "rows_after_missing_stage": 300,
+  "duplicates_removed": 8,
+  "rows_final": 292,
+  "temp_missing_rate_before_pct": 9.0,
+  "temp_missing_after": 0,
+  "cells": 1200,
+  "missing_cells": 155,
+  "handled_cells": 155,
+  "missing_handle_rate_pct": 100.0,
+  "missing_by_col": {
+    "temp": 27,
+    "vib": 19,
+    "current": 6,
+    "pressure": 103
+  },
+  "phys_cells_before": 9,
+  "phys_cells_after": 0,
+  "stat_cells_before": 21,
+  "stat_cells_after": 46,
+  "review_cells": 12,
+  "duplicates_before": 8,
+  "duplicates_after": 0,
+  "lists": {
+    "missing": [
+      {
+        "column": "pressure",
+        "n_missing": 103,
+        "missing_rate_pct": 34.33,
+        "max_consecutive": 12,
+        "mechanism": "成片缺失(断电/断线)",
+        "watch": true
+      },
+      {
+        "column": "temp",
+        "n_missing": 27,
+        "missing_rate_pct": 9.0,
+        "max_consecutive": 1,
+        "mechanism": "随机散点缺失",
+        "watch": true
+      },
+      {
+        "column": "vib",
+        "n_missing": 19,
+        "missing_rate_pct": 6.33,
+        "max_consecutive": 1,
+        "mechanism": "随机散点缺失",
+        "watch": true
+      },
+      {
+        "column": "current",
+        "n_missing": 6,
+        "missing_rate_pct": 2.0,
+        "max_consecutive": 1,
+        "mechanism": "随机散点缺失",
+        "watch": false
+      }
+    ],
+    "anomaly": [
+      {
+        "column": "temp",
+        "n_phys": 0,
+        "n_sigma3": 7,
+        "n_iqr": 7,
+        "n_union": 7,
+        "phys_range": "[-20, 200]",
+        "iqr_bounds": "[44.100, 66.340]",
+        "sigma_bounds": "[18.104, 96.112]",
+        "ruler": "IQR（右偏/有毛刺时更稳健）"
+      },
+      {
+        "column": "vib",
+        "n_phys": 5,
+        "n_sigma3": 5,
+        "n_iqr": 5,
+        "n_union": 5,
+        "phys_range": "[0, 30]",
+        "iqr_bounds": "[2.677, 5.306]",
+        "sigma_bounds": "[1.448, 6.357]",
+        "ruler": "IQR（右偏/有毛刺时更稳健）"
+      },
+      {
+        "column": "current",
+        "n_phys": 0,
+        "n_sigma3": 1,
+        "n_iqr": 4,
+        "n_union": 4,
+        "phys_range": "[0, 120]",
+        "iqr_bounds": "[26.835, 62.235]",
+        "sigma_bounds": "[25.888, 63.295]",
+        "ruler": "IQR（右偏/有毛刺时更稳健）"
+      },
+      {
+        "column": "pressure",
+        "n_phys": 4,
+        "n_sigma3": 4,
+        "n_iqr": 5,
+        "n_union": 5,
+        "phys_range": "[0, 2.5]",
+        "iqr_bounds": "[0.857, 1.537]",
+        "sigma_bounds": "[-2.340, 5.083]",
+        "ruler": "IQR（右偏/有毛刺时更稳健）"
+      }
+    ],
+    "duplicate": [
+      {
+        "row": 86,
+        "ts": "2026-03-03 18:00:00",
+        "device": "P-01",
+        "temp": NaN,
+        "vib": 3.403
+      },
+      {
+        "row": 93,
+        "ts": "2026-03-04 01:00:00",
+        "device": "P-02",
+        "temp": NaN,
+        "vib": 4.719
+      },
+      {
+        "row": 123,
+        "ts": "2026-03-05 07:00:00",
+        "device": "P-02",
+        "temp": 56.64,
+        "vib": 3.278
+      },
+      {
+        "row": 206,
+        "ts": "2026-03-08 18:00:00",
+        "device": "P-01",
+        "temp": 50.18,
+        "vib": 3.315
+      },
+      {
+        "row": 214,
+        "ts": "2026-03-09 02:00:00",
+        "device": "P-03",
+        "temp": 55.5,
+        "vib": NaN
+      },
+      {
+        "row": 218,
+        "ts": "2026-03-09 06:00:00",
+        "device": "P-01",
+        "temp": 59.23,
+        "vib": 4.469
+      },
+      {
+        "row": 243,
+        "ts": "2026-03-10 07:00:00",
+        "device": "P-02",
+        "temp": 57.02,
+        "vib": 3.886
+      },
+      {
+        "row": 290,
+        "ts": "2026-03-12 06:00:00",
+        "device": "P-01",
+        "temp": 135.0,
+        "vib": 3.994
+      }
+    ]
+  },
+  "rates_before": {
+    "complete": 87.08,
+    "accurate": 98.25,
+    "consistent": 97.33
+  },
+  "rates_after": {
+    "complete": 100.0,
+    "accurate": 99.0,
+    "consistent": 97.33
+  },
+  "quality_before": 93.6,
+  "quality_after": 99.07,
+  "quality_gain": 5.47,
+  "dual_check": {
+    "py_rows_flagged": 9,
+    "pd_rows_flagged": 9,
+    "consistent": true
+  },
+  "imputation_experiment": {
+    "repeats": 5,
+    "hold_frac": 0.25,
+    "per_repeat": [
+      {
+        "repeat": 1,
+        "n_holdout": 66,
+        "mae_mean": 2.8151,
+        "mae_pred": 0.6729,
+        "rmse_mean": 3.1153,
+        "rmse_pred": 0.8322
+      },
+      {
+        "repeat": 2,
+        "n_holdout": 66,
+        "mae_mean": 2.6053,
+        "mae_pred": 0.7676,
+        "rmse_mean": 3.0548,
+        "rmse_pred": 0.9423
+      },
+      {
+        "repeat": 3,
+        "n_holdout": 66,
+        "mae_mean": 2.7559,
+        "mae_pred": 0.6753,
+        "rmse_mean": 3.2203,
+        "rmse_pred": 0.821
+      },
+      {
+        "repeat": 4,
+        "n_holdout": 66,
+        "mae_mean": 2.7126,
+        "mae_pred": 0.7033,
+        "rmse_mean": 3.1332,
+        "rmse_pred": 0.8677
+      },
+      {
+        "repeat": 5,
+        "n_holdout": 66,
+        "mae_mean": 2.4981,
+        "mae_pred": 0.5554,
+        "rmse_mean": 2.9072,
+        "rmse_pred": 0.6953
+      }
+    ],
+    "n_valid_obs": 266,
+    "mae_mean": 2.6774,
+    "mae_pred": 0.6749,
+    "rmse_mean": 3.0862,
+    "rmse_pred": 0.8317,
+    "mae_lift_pct": 74.79,
+    "pred_win_rate": 0.8606,
+    "n_compared": 330,
+    "better": true
+  },
+  "audit_log": [
+    {
+      "step": "temp: 时序插值+两端兜底",
+      "before_na": 27,
+      "after_na": 0,
+      "reason": "散点断线（最长段 < 断电阈值），按相邻趋势补最贴近物理"
+    },
+    {
+      "step": "vib: 中位数填充",
+      "before_na": 19,
+      "after_na": 0,
+      "reason": "振动右偏有长尾，中位数比均值稳；不删行以守住『行数不变』口径"
+    },
+    {
+      "step": "current: 前向填充",
+      "before_na": 6,
+      "after_na": 0,
+      "reason": "负载电流变化缓慢，ffill 比全局均值更贴现场"
+    },
+    {
+      "step": "pressure: 整列策略（标记+中位数）",
+      "before_na": 103,
+      "after_na": 0,
+      "reason": "缺失率 34.3%>30%，其中 12 小时成片断电——插值会造出假趋势，故不假装恢复，加缺失标记列并计入待复核"
+    }
+  ],
+  "code_style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "engine_real": true,
+    "n_files": 14,
+    "violations": 106,
+    "layout_violations": 55,
+    "structural_violations": 51,
+    "code_lines": 1669,
+    "rate": 93.65,
+    "min_pass": 70.0,
+    "by_rule": [
+      {
+        "code": "E501",
+        "count": 44,
+        "meaning": "行宽超 79 字符"
+      },
+      {
+        "code": "E127",
+        "count": 9,
+        "meaning": "续行多缩进（视觉对齐歧义）"
+      },
+      {
+        "code": "E128",
+        "count": 2,
+        "meaning": "续行少缩进（视觉对齐歧义）"
+      }
+    ],
+    "structural": {
+      "缺docstring": 51,
+      "命名非snake_case": 0,
+      "含制表符": 0,
+      "import星号": 0
+    },
+    "structural_clean": false,
+    "passes": true,
+    "fallback_note": "真实路径：pycodestyle 已安装并运行",
+    "per_file": [
+      {
+        "file": "run.py",
+        "code_lines": 18,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/data_quality48/__init__.py",
+        "code_lines": 6,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/data_quality48/cli.py",
+        "code_lines": 71,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 94.37
+      },
+      {
+        "file": "src/data_quality48/config.py",
+        "code_lines": 142,
+        "layout_violations": 2,
+        "structural_violations": 3,
+        "file_rate": 96.48
+      },
+      {
+        "file": "src/data_quality48/core.py",
+        "code_lines": 345,
+        "layout_violations": 18,
+        "structural_violations": 1,
+        "file_rate": 94.49
+      },
+      {
+        "file": "src/data_quality48/io_utils.py",
+        "code_lines": 56,
+        "layout_violations": 0,
+        "structural_violations": 4,
+        "file_rate": 92.86
+      },
+      {
+        "file": "src/data_quality48/pipeline.py",
+        "code_lines": 353,
+        "layout_violations": 22,
+        "structural_violations": 1,
+        "file_rate": 93.48
+      },
+      {
+        "file": "src/data_quality48/report.py",
+        "code_lines": 24,
+        "layout_violations": 0,
+        "structural_violations": 2,
+        "file_rate": 91.67
+      },
+      {
+        "file": "src/data_quality48/style.py",
+        "code_lines": 170,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 97.65
+      },
+      {
+        "file": "src/data_quality48/tiers.py",
+        "code_lines": 129,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "tests/__init__.py",
+        "code_lines": 1,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 0.0
+      },
+      {
+        "file": "tests/test_config.py",
+        "code_lines": 81,
+        "layout_violations": 5,
+        "structural_violations": 11,
+        "file_rate": 80.25
+      },
+      {
+        "file": "tests/test_core.py",
+        "code_lines": 111,
+        "layout_violations": 1,
+        "structural_violations": 16,
+        "file_rate": 84.68
+      },
+      {
+        "file": "tests/test_tiers.py",
+        "code_lines": 162,
+        "layout_violations": 1,
+        "structural_violations": 10,
+        "file_rate": 93.21
+      }
+    ],
+    "definition": "规范率 = 100 x (1 - (版式违规条数 + 结构违规条数) / 非空代码行数)；结构项 = 缺docstring/命名非snake_case/制表符/import* 四类计数之和"
+  },
+  "min_code_style": 70.0,
+  "tier_gates": {
+    "D": {
+      "max_temp_missing_cells": 0,
+      "require_rows_unchanged": true,
+      "min_code_style_pct": 70.0
+    },
+    "C": {
+      "min_handle_rate_pct": 95.0,
+      "min_lists": 3
+    },
+    "B": {
+      "min_quality_score": 85.0,
+      "min_reason_entries": 4,
+      "min_decision_chars": 120
+    },
+    "A": {
+      "require_pred_better": true,
+      "min_argument_chars": 200
+    }
+  },
+  "claimed_tier": "优(A)",
+  "tier_verdict": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "key": "D",
+        "need": "温度列缺失率降为0且行数不变；代码规范率≥70%",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "temp 缺失 27 → 0 格；行数 300 → 300（缺失阶段零删行）"
+      },
+      {
+        "tier": "良好(C)",
+        "key": "C",
+        "need": "缺失处理率≥95%+三清单齐全",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "处理率 100.00%（线 95%）；三清单 4/4/8 项"
+      },
+      {
+        "tier": "优秀(B)",
+        "key": "B",
+        "need": "评分≥85且理由完整；决策记录完整",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "质量分 99.07（线 85）；逐列理由 4 条；决策记录 243 字"
+      },
+      {
+        "tier": "优(A)",
+        "key": "A",
+        "need": "预测填充优于均值且论证清楚",
+        "gate": null,
+        "functional": true,
+        "style_ok": true,
+        "pass": true,
+        "evidence": "预测 MAE 0.6749℃ < 均值 2.6774℃（优于）；论证段 287 字"
+      }
+    ],
+    "final": {
+      "D": true,
+      "C": true,
+      "B": true,
+      "A": true
+    },
+    "claimed": "优(A)",
+    "claimed_key": "A",
+    "measured": {
+      "temp_missing_after": 0,
+      "rows_unchanged": true,
+      "handle_rate_pct": 100.0,
+      "n_lists": 3,
+      "quality_after": 99.07,
+      "n_reasons": 4,
+      "decision_chars": 243,
+      "pred_better": true,
+      "mae_pred": 0.6749,
+      "mae_mean": 2.6774,
+      "argument_chars": 287
+    },
+    "evidence": {
+      "D": "temp 缺失 27 → 0 格；行数 300 → 300（缺失阶段零删行）",
+      "C": "处理率 100.00%（线 95%）；三清单 4/4/8 项",
+      "B": "质量分 99.07（线 85）；逐列理由 4 条；决策记录 243 字",
+      "A": "预测 MAE 0.6749℃ < 均值 2.6774℃（优于）；论证段 287 字"
+    },
+    "gates": {
+      "D": {
+        "max_temp_missing_cells": 0,
+        "require_rows_unchanged": true,
+        "min_code_style_pct": 70.0
+      },
+      "C": {
+        "min_handle_rate_pct": 95.0,
+        "min_lists": 3
+      },
+      "B": {
+        "min_quality_score": 85.0,
+        "min_reason_entries": 4,
+        "min_decision_chars": 120
+      },
+      "A": {
+        "require_pred_better": true,
+        "min_argument_chars": 200
+      }
+    },
+    "style_rate": 93.65,
+    "manual": [
+      "口头答辩：逐列缺失机制判断与填充策略是否讲得清（企业元师傅签认）",
+      "论证说服力：A 档'预测优于均值'的机理解释（程序只判段落存在+字数达标）",
+      "工单末页学习反思单三问（计入过程分 10%）"
+    ]
+  },
+  "tiers": {
+    "D": {
+      "要求": "温度列缺失率降为0且行数不变 + 代码规范率≥70%",
+      "实测": "temp 缺失率 9.00% → 0.00%；行数 300 → 300（缺失阶段零删行）",
+      "实测2": "代码规范率 93.65%（pycodestyle（PEP8 官方参考实现），14 个文件 / 1669 行 / 106 条违规，线 70%）",
+      "达标": true
+    },
+    "C": {
+      "要求": "缺失处理率≥95% 且三清单齐全",
+      "实测": "处理率 100.00%；缺失/异常/重复清单 4/4/8 项（红线 95%）",
+      "达标": true
+    },
+    "B": {
+      "要求": "质量分≥85 且策略理由完整、决策记录完整",
+      "实测": "质量分 99.07（权重 0.4/0.4/0.2，目标线 85，警戒线 80）；每列策略+理由 4 条；决策记录 243 字",
+      "达标": true
+    },
+    "A": {
+      "要求": "预测填充优于均值填充且论证清楚",
+      "实测": "MAE 均值 2.6774℃ vs 预测 0.6749℃（改善 74.79%）；逐格胜率 86.1%（n=330，5 轮留出，可信观测 266 格）；论证段 287 字（线 200）",
+      "达标": true
+    }
+  }
 }

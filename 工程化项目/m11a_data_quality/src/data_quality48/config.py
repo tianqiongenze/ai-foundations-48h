@@ -10,7 +10,9 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List
 
 DEFAULTS: Dict[str, Any] = {
-    "warn": 80.0, "danger": 95.0, "unit": "c", "seed": 7, "topk": 2,
+    "warn": 80.0, "danger": 95.0, "unit": "c", "seed": 7, "topk": 3,
+    "n_rows": 300, "quality_target": 85.0,
+    "w_complete": 0.4, "w_accurate": 0.4, "w_consistent": 0.2,
 }
 
 
@@ -132,6 +134,15 @@ class Settings:
             seed=int(d["seed"]), topk=int(d["topk"]),
             items=items, raw=d,
         )
+
+    def tier_gates(self):
+        """工单四档门槛的读出位点：rules.yaml 的 tiers: 段。
+
+        判定逻辑在 tiers.py（纯函数），这里只负责把外置数字递给流水线——
+        改门槛只动 YAML，不动代码。
+        """
+        from . import tiers
+        return tiers.gates(self.raw)
 
 
 def load_config(path):

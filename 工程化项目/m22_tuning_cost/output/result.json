@@ -1,21 +1,350 @@
 {
   "grid": {
     "best": {
-      "max_depth": 3,
+      "max_depth": 5,
       "n_estimators": 50
     },
-    "cv": 0.8667,
-    "sec": 1.107
+    "f1": 0.8315,
+    "sec": 0.861,
+    "candidates": [
+      {
+        "params": {
+          "max_depth": 3,
+          "n_estimators": 50
+        },
+        "f1": 0.8302,
+        "sec": 0.092
+      },
+      {
+        "params": {
+          "max_depth": 3,
+          "n_estimators": 100
+        },
+        "f1": 0.8247,
+        "sec": 0.18
+      },
+      {
+        "params": {
+          "max_depth": 4,
+          "n_estimators": 50
+        },
+        "f1": 0.8308,
+        "sec": 0.095
+      },
+      {
+        "params": {
+          "max_depth": 4,
+          "n_estimators": 100
+        },
+        "f1": 0.8156,
+        "sec": 0.183
+      },
+      {
+        "params": {
+          "max_depth": 5,
+          "n_estimators": 50
+        },
+        "f1": 0.8315,
+        "sec": 0.093
+      },
+      {
+        "params": {
+          "max_depth": 5,
+          "n_estimators": 100
+        },
+        "f1": 0.8214,
+        "sec": 0.182
+      }
+    ]
   },
   "random": {
     "best": {
       "n_estimators": 50,
       "max_depth": 4
     },
-    "cv": 0.8633,
-    "sec": 0.635
+    "f1": 0.8308,
+    "sec": 0.501,
+    "candidates": [
+      {
+        "params": {
+          "n_estimators": 100,
+          "max_depth": 5
+        },
+        "f1": 0.8214,
+        "sec": 0.186
+      },
+      {
+        "params": {
+          "n_estimators": 50,
+          "max_depth": 4
+        },
+        "f1": 0.8308,
+        "sec": 0.094
+      },
+      {
+        "params": {
+          "n_estimators": 100,
+          "max_depth": 3
+        },
+        "f1": 0.8247,
+        "sec": 0.186
+      }
+    ]
   },
-  "time_saved_sec": 0.472,
-  "cv_gap": 0.0034,
-  "n_combos": 6
+  "time_saved_sec": 0.36,
+  "f1_gap": 0.0007,
+  "n_combos": 6,
+  "learning_curve": {
+    "rows": [
+      {
+        "n_train": 40,
+        "train_f1": 1.0,
+        "val_f1": 0.7591,
+        "gap": 0.2409
+      },
+      {
+        "n_train": 100,
+        "train_f1": 0.9957,
+        "val_f1": 0.8325,
+        "gap": 0.1632
+      },
+      {
+        "n_train": 160,
+        "train_f1": 0.9714,
+        "val_f1": 0.8409,
+        "gap": 0.1305
+      },
+      {
+        "n_train": 200,
+        "train_f1": 0.962,
+        "val_f1": 0.8291,
+        "gap": 0.1329
+      }
+    ],
+    "knee_n": 160,
+    "scoring": "f1",
+    "knee_gain_max": 0.01,
+    "sec": 0.469
+  },
+  "boost_arm": {
+    "engine": "sklearn.GradientBoostingClassifier",
+    "fallback": true,
+    "best_iter": 22,
+    "f1": 0.8571,
+    "sec": 0.236,
+    "note": "离线兜底：未安装 xgboost，改用 sklearn GradientBoostingClassifier（staged_predict 逐树测验证集 F1 取峰值，等价 f1 早停口径）"
+  },
+  "worklog": {
+    "best": {
+      "params": {
+        "max_depth": 5,
+        "n_estimators": 50
+      },
+      "f1": 0.8315,
+      "sec": 0.093
+    },
+    "total_sec": 0.825
+  },
+  "reproducible": true,
+  "run_sec": 4.528,
+  "gates": {
+    "D": {
+      "style_min": 70.0
+    },
+    "C": {
+      "f1_min": 0.72,
+      "limit_sec": 7200
+    },
+    "B": {
+      "curve_points_min": 4,
+      "knee_gain_max": 0.01
+    },
+    "A": {
+      "f1_min": 0.88,
+      "fast_gap_max": 0.02
+    }
+  },
+  "code_style": {
+    "engine": "pycodestyle（PEP8 官方参考实现）",
+    "engine_real": true,
+    "n_files": 14,
+    "violations": 36,
+    "layout_violations": 4,
+    "structural_violations": 32,
+    "code_lines": 1036,
+    "rate": 96.53,
+    "min_pass": 70.0,
+    "by_rule": [
+      {
+        "code": "E501",
+        "count": 2,
+        "meaning": "行宽超 79 字符"
+      },
+      {
+        "code": "E128",
+        "count": 2,
+        "meaning": "续行少缩进（视觉对齐歧义）"
+      }
+    ],
+    "structural": {
+      "缺docstring": 32,
+      "命名非snake_case": 0,
+      "含制表符": 0,
+      "import星号": 0
+    },
+    "structural_clean": false,
+    "passes": true,
+    "fallback_note": "真实路径：pycodestyle 已安装并运行",
+    "per_file": [
+      {
+        "file": "run.py",
+        "code_lines": 18,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/tuning_cost/__init__.py",
+        "code_lines": 7,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "src/tuning_cost/cli.py",
+        "code_lines": 68,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 98.53
+      },
+      {
+        "file": "src/tuning_cost/config.py",
+        "code_lines": 153,
+        "layout_violations": 0,
+        "structural_violations": 3,
+        "file_rate": 98.04
+      },
+      {
+        "file": "src/tuning_cost/core.py",
+        "code_lines": 115,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 99.13
+      },
+      {
+        "file": "src/tuning_cost/io_utils.py",
+        "code_lines": 56,
+        "layout_violations": 0,
+        "structural_violations": 4,
+        "file_rate": 92.86
+      },
+      {
+        "file": "src/tuning_cost/pipeline.py",
+        "code_lines": 141,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 99.29
+      },
+      {
+        "file": "src/tuning_cost/report.py",
+        "code_lines": 24,
+        "layout_violations": 0,
+        "structural_violations": 2,
+        "file_rate": 91.67
+      },
+      {
+        "file": "src/tuning_cost/style.py",
+        "code_lines": 170,
+        "layout_violations": 3,
+        "structural_violations": 1,
+        "file_rate": 97.65
+      },
+      {
+        "file": "src/tuning_cost/tiers.py",
+        "code_lines": 78,
+        "layout_violations": 0,
+        "structural_violations": 0,
+        "file_rate": 100.0
+      },
+      {
+        "file": "tests/__init__.py",
+        "code_lines": 1,
+        "layout_violations": 0,
+        "structural_violations": 1,
+        "file_rate": 0.0
+      },
+      {
+        "file": "tests/test_config.py",
+        "code_lines": 28,
+        "layout_violations": 1,
+        "structural_violations": 6,
+        "file_rate": 75.0
+      },
+      {
+        "file": "tests/test_core.py",
+        "code_lines": 74,
+        "layout_violations": 0,
+        "structural_violations": 7,
+        "file_rate": 90.54
+      },
+      {
+        "file": "tests/test_tiers.py",
+        "code_lines": 103,
+        "layout_violations": 0,
+        "structural_violations": 5,
+        "file_rate": 95.15
+      }
+    ],
+    "definition": "规范率 = 100 x (1 - (版式违规条数 + 结构违规条数) / 非空代码行数)；结构项 = 缺docstring/命名非snake_case/制表符/import* 四类计数之和"
+  },
+  "tier_verdict": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "gate": 70.0,
+        "need": "基线可复现；代码规范率≥70%",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "良好(C)",
+        "gate": 70.0,
+        "need": "F1≥0.72限时内",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优秀(B)",
+        "gate": 70.0,
+        "need": "曲线完整拐点论证；决策记录完整",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优(A)",
+        "gate": 70.0,
+        "need": "F1≥0.88或快速方案论证",
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      }
+    ],
+    "claimed": "优(A)",
+    "summary": "同种子重跑两次逐位一致｜grid F1 实测 0.8315｜perf_counter 墙钟 4.528s（限时 7200s）｜曲线 4 档拐点 n=160（增益阈值 0.01）｜决策记录完整（result.json 回读校验）｜xgboost MISS → 兜底引擎=sklearn.GradientBoostingClassifier，口径已记录｜实测规范率 96.53%",
+    "measured": {
+      "reproducible": true,
+      "grid_f1": 0.8315,
+      "random_f1": 0.8308,
+      "boost_f1": 0.8571,
+      "fast_ok": true,
+      "run_sec": 4.528,
+      "curve_points": 4,
+      "knee_found": true,
+      "decision_ok": true,
+      "style_rate": 96.53
+    }
+  }
 }

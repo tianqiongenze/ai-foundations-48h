@@ -3,3 +3,26 @@ danger: 95.0
 unit: "c"
 seed: 7
 topk: 3
+
+# 工单 M4-2《RAG知识库问答》验收标准四档门槛（数字外置，逐字取自工单）
+tiers:
+  D:
+    name: 及格(D)
+    need: 幻觉案例≥2条；代码规范率≥70%
+    style_min: 70.0
+    halluc_min: 2
+  C:
+    name: 良好(C)
+    need: 检索≥80%有引用
+    retrieve_min: 0.80
+    cite_min: 1.0
+  B:
+    name: 优秀(B)
+    need: 检索≥85%可溯源；决策记录完整
+    retrieve_min: 0.85
+    trace_min: 1.0
+  A:
+    name: 优(A)
+    need: 检索≥90%加融合说明
+    retrieve_min: 0.90
+    fusion_lines_min: 2

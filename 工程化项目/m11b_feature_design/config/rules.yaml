@@ -1,5 +1,35 @@
-warn: 80.0
-danger: 95.0
-unit: "c"
-seed: 7
-topk: 3
+# M1-1b 特征设计——规则外置（GB/T 8566 配置管理：改配置不改代码）
+# 本文件每个键都被供应商代码 pipeline._read() 真实读取，tests/test_config.py 逐键验证。
+seed: 7                      # 数据集随机种子（复现用）
+unit: "mm/s"                 # 振动烈度单位（ISO 10816 口径，写进报告输入行）
+topk: 8                      # Top-N 精选特征集的 N（A/B 对比的一个臂）
+warn: 0.93                   # 警戒线：Top-N 精选集 accuracy 低于它 = 砍过头/冗余未清
+danger: 0.03                 # 红线：尾部砍 30% 后 accuracy 允许的最大降幅（3 个百分点）
+min_features: 10             # C 档门槛：特征数下限（工单要求 ≥10）
+cut_frac: 0.30               # B 档门槛：消融砍掉的重要性榜尾部比例（工单"特征−30%"）
+folds: 4                     # 分层交叉验证折数
+seeds: [0, 1, 2]             # 多种子 CV / 多种子重要性榜（小样本必须重复才敢下结论）
+ablation_random_sets: 5      # 随机砍对照组数（单跑一组会和尾部砍打平，分不出砍谁）
+redundant_r: 0.95            # 相关性初筛阈值（工单 B03：|r| 超过它就判为信息重复）
+n_windows: 60                # 每类窗口数（正常/磨损各 60，共 120 样本）
+
+# 工单《M1-1b-特征设计与优化》"四、验收标准"四档门槛（数字外置）。
+# 判定与消融/字典实验用的实验参数都从这里读（tests/test_tiers.py 钉死口径，
+# 禁止为变绿下调门槛）。顶层 danger/cut_frac/min_features 是兼容展示线，
+# 与本段同值——一致性由 test_tiers 断言。
+tiers:
+  D:
+    min_features: 5            # 5 特征表能跑通（最小集出指标）
+    min_code_style_pct: 70.0   # 代码规范率 ≥70%
+  C:
+    min_features: 10           # ≥10 特征
+    dict_required_cols: 5      # 字典五栏（名称/公式/含义/单位/范围）成文
+  B:
+    cut_frac: 0.30             # 特征砍 30%
+    max_acc_drop: 0.03         # 性能不降红线：acc 最大降幅 3 个百分点
+    min_decision_chars: 120    # 决策记录段落存在且字数达标（口头答辩另计）
+  A:
+    top_n: 3                   # 进 Top3
+    min_new_in_top: 1          # 新特征挤进 TopN 的个数下限
+    min_explain_chars: 40      # 物理解释成文字数下限（说服力人工评）
+

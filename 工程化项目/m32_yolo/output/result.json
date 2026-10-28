@@ -1,34 +1,150 @@
 {
-  "detected_box": [
-    32,
-    40,
-    8,
-    8
-  ],
-  "conf": 0.6578,
-  "iou": 0.6,
-  "gt": [
-    30,
-    40,
-    8,
-    8
-  ],
-  "bench": [
-    {
-      "win": 4,
-      "iou": 0.25,
-      "fps": 1410.3
+  "baseline_iou": 0.6,
+  "n_scenes": 15,
+  "n_gt": 18,
+  "n_det": 18,
+  "neg_fp": 0,
+  "ap@0.5": 0.8272,
+  "map@0.5:0.95": {
+    "0.55": 0.4024,
+    "0.65": 0.3746,
+    "0.75": 0.3476
+  },
+  "sweep": {
+    "0.55@0.5": 0.8272,
+    "0.55@0.55": 0.6944,
+    "0.55@0.6": 0.6944,
+    "0.55@0.65": 0.5736,
+    "0.55@0.7": 0.5736,
+    "0.55@0.75": 0.5736,
+    "0.55@0.8": 0.0869,
+    "0.55@0.85": 0.0,
+    "0.55@0.9": 0.0,
+    "0.55@0.95": 0.0,
+    "0.65@0.5": 0.7752,
+    "0.65@0.55": 0.6432,
+    "0.65@0.6": 0.6432,
+    "0.65@0.65": 0.5326,
+    "0.65@0.7": 0.5326,
+    "0.65@0.75": 0.5326,
+    "0.65@0.8": 0.0869,
+    "0.65@0.85": 0.0,
+    "0.65@0.9": 0.0,
+    "0.65@0.95": 0.0,
+    "0.75@0.5": 0.7238,
+    "0.75@0.55": 0.5926,
+    "0.75@0.6": 0.5926,
+    "0.75@0.65": 0.4934,
+    "0.75@0.7": 0.4934,
+    "0.75@0.75": 0.4934,
+    "0.75@0.8": 0.0869,
+    "0.75@0.85": 0.0,
+    "0.75@0.9": 0.0,
+    "0.75@0.95": 0.0
+  },
+  "recommend": {
+    "conf": 0.55,
+    "iou": 0.5
+  },
+  "fps_protocol": {
+    "warmup": 5,
+    "frames": 100,
+    "cpu": 10
+  },
+  "fps_by_win": {
+    "4": 2190.3,
+    "8": 3703.8,
+    "16": 4111.5
+  },
+  "speedup_pct_win16_vs_win4": 87.7,
+  "style_rate": 96.88,
+  "tiers": {
+    "tiers": [
+      {
+        "tier": "及格(D)",
+        "need": "基线mAP有数；代码规范率≥70%",
+        "key": "D",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "良好(C)",
+        "need": "mAP≥0.60表完整",
+        "key": "C",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优秀(B)",
+        "need": "给出推荐点及理由；决策记录完整",
+        "key": "B",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      },
+      {
+        "tier": "优(A)",
+        "need": "mAP≥0.75或加速≥50%",
+        "key": "A",
+        "gate": 70.0,
+        "functional": true,
+        "style_ok": true,
+        "pass": true
+      }
+    ],
+    "claimed": "优(A)",
+    "manual": [
+      "推荐理由的口头陈述与答辩问答（工单：方案对比周必答）",
+      "企业元验收栏签认（功能可用/参数留痕/数据可信，值班师傅签字）",
+      "ONNX 通道未运行时的兜底口径是否可接受（见报告 ONNX 段）"
+    ],
+    "miss_note": null,
+    "gates": {
+      "D": {
+        "style_rate": 70.0
+      },
+      "C": {
+        "ap": 0.6
+      },
+      "B": {
+        "decisions": 1.0
+      },
+      "A": {
+        "ap": 0.75,
+        "speedup_pct": 50.0
+      }
     },
-    {
-      "win": 8,
-      "iou": 0.6,
-      "fps": 5432.0
-    },
-    {
-      "win": 16,
-      "iou": 0.0,
-      "fps": 19532.6
+    "measured": {
+      "ap": 0.8271604938271602,
+      "style_rate": 96.88,
+      "sweep_rows": 3,
+      "sweep_cells": 30,
+      "sweep_cells_expected": 30,
+      "table_complete": true,
+      "rec_ap": 0.8271604938271602,
+      "reason_ok": true,
+      "speedup": 87.71114719494504,
+      "decisions": 1
     }
-  ],
-  "best_win": 8
+  },
+  "decision_entries": 1,
+  "ultralytics": "ultralytics MISS（本机未安装）→ 确定性兜底：自研滑窗CV检测器 core.detect_all，mAP 全部由该通道 IoU 匹配实测计算",
+  "onnx": {
+    "available": true,
+    "model": "/Users/joelgong/PycharmProjects/ai-course-teaching-resources/05-AI应用基础48课时版/data/weights/yolov8n.onnx",
+    "max_conf": 0.1119,
+    "boxes_over_thr": 0,
+    "fps": 24.85,
+    "frame_ms": 40.2,
+    "note": "COCO 80 类无'工业缺陷'类：合成缺陷上实测最大置信度见本行，过阈(0.25)框数=0——YOLO 通道对合成缺陷不可用是实测结论，非猜测"
+  },
+  "annotated": [
+    "/Users/joelgong/PycharmProjects/ai-course-teaching-resources/05-AI应用基础48课时版/工程化项目/m32_yolo/output/annotated_scene1.png",
+    "/Users/joelgong/PycharmProjects/ai-course-teaching-resources/05-AI应用基础48课时版/工程化项目/m32_yolo/output/annotated_scene2.png"
+  ]
 }

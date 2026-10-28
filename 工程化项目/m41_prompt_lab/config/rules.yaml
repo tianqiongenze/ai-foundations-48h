@@ -3,3 +3,24 @@ danger: 95.0
 unit: "c"
 seed: 7
 topk: 3
+
+# 工单 M4-1《LLM故障诊断》验收标准四档门槛（数字外置，逐字取自工单）
+tiers:
+  D:
+    name: 及格(D)
+    need: 能出回答
+    style_min: 70.0
+  C:
+    name: 良好(C)
+    need: 提升≥20%加对比表
+    lift_min: 20.0
+    table_rows_min: 3
+  B:
+    name: 优秀(B)
+    need: 断服不崩溃有降级话术；决策记录完整
+  A:
+    name: 优(A)
+    need: 提升≥35%或多轮对话
+    lift_a_min: 35.0
+    turns_min: 2
+

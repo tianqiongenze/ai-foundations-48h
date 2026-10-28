@@ -3,3 +3,21 @@ danger: 95.0
 unit: "c"
 seed: 7
 topk: 3
+
+# 工单 Z《综合项目答辩》验收标准四档门槛（数字外置，逐字取自工单）
+tiers:
+  D:
+    name: 及格(D)
+    need: 预答辩评委放行；代码规范率≥70%
+    style_min: 70.0
+  C:
+    name: 良好(C)
+    need: 链路完整基本问题全答
+    chain_layers_min: 5
+    qa_min: 3
+  B:
+    name: 优秀(B)
+    need: 评委评分≥85；决策记录完整
+  A:
+    name: 优(A)
+    need: 创新亮点加部署演示
