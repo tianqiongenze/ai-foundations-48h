@@ -1,0 +1,72 @@
+{
+  "hello_ai": {
+    "code": "\n# 1. 第一个程序：向 AI 世界问好\nprint(\"Hello, AI World!\")\nprint(\"人生苦短，我用 Python\")\n",
+    "output": "Hello, AI World!\n人生苦短，我用 Python\n",
+    "error": null
+  },
+  "variables": {
+    "code": "\n# 2. 变量与四大基本类型\nage = 20              # int 整数\nscore = 92.5          # float 浮点数\nname = \"小明\"          # str 字符串\nis_student = True     # bool 布尔值\n\nprint(age, type(age))\nprint(score, type(score))\nprint(name, type(name))\nprint(is_student, type(is_student))\n",
+    "output": "20 <class 'int'>\n92.5 <class 'float'>\n小明 <class 'str'>\nTrue <class 'bool'>\n",
+    "error": null
+  },
+  "string_ops": {
+    "code": "\n# 3. 字符串操作：AI 提示词(Prompt)拼接实战\nmodel = \"GPT-4\"\ntask = \"情感分类\"\nprompt = f\"请你扮演NLP专家，使用{model}完成{task}任务\"\nprint(prompt)\n\ntext = \"  Python是AI时代的必修语言  \"\nprint(\"原始长度:\", len(text))\nprint(\"去空格:\", text.strip())\nprint(\"替换:\", text.strip().replace(\"必修\", \"核心\"))\nprint(\"分割:\", \"loss,accuracy,f1\".split(\",\"))\n",
+    "output": "请你扮演NLP专家，使用GPT-4完成情感分类任务\n原始长度: 20\n去空格: Python是AI时代的必修语言\n替换: Python是AI时代的核心语言\n分割: ['loss', 'accuracy', 'f1']\n",
+    "error": null
+  },
+  "list_ops": {
+    "code": "\n# 4. 列表：批量管理数据\nlosses = [0.9, 0.6, 0.4, 0.3, 0.25]\n\nprint(\"训练损失:\", losses)\nprint(\"列表长度:\", len(losses))\nprint(\"最后一个epoch损失:\", losses[-1])\nprint(\"前3个epoch:\", losses[:3])\nlosses.append(0.22)          # 尾部追加\nprint(\"追加后:\", losses)\nprint(\"最小损失:\", min(losses), \"平均损失:\", sum(losses)/len(losses))\n",
+    "output": "训练损失: [0.9, 0.6, 0.4, 0.3, 0.25]\n列表长度: 5\n最后一个epoch损失: 0.25\n前3个epoch: [0.9, 0.6, 0.4]\n追加后: [0.9, 0.6, 0.4, 0.3, 0.25, 0.22]\n最小损失: 0.22 平均损失: 0.445\n",
+    "error": null
+  },
+  "dict_count": {
+    "code": "\n# 5. 字典：AI 文本词频统计实战\ntext = \"AI 改变世界 Python 支撑 AI AI 依赖数据 数据 驱动 AI\"\nwords = text.split()\n\nfreq = {}\nfor w in words:\n    freq[w] = freq.get(w, 0) + 1\n\nfor word, count in sorted(freq.items(), key=lambda x: -x[1]):\n    print(f\"{word}: {count}次\")\n",
+    "output": "AI: 4次\n改变世界: 1次\nPython: 1次\n支撑: 1次\n依赖数据: 1次\n数据: 1次\n驱动: 1次\n",
+    "error": null
+  },
+  "control_flow": {
+    "code": "\n# 6. 条件与循环：批量评定学生等级\nscores = [95, 82, 67, 58, 74]\n\nfor s in scores:\n    if s >= 90:\n        grade = \"优秀(A)\"\n    elif s >= 80:\n        grade = \"良好(B)\"\n    elif s >= 60:\n        grade = \"及格(C)\"\n    else:\n        grade = \"不及格(F)\"\n    print(f\"分数 {s} -> 等级 {grade}\")\n",
+    "output": "分数 95 -> 等级 优秀(A)\n分数 82 -> 等级 良好(B)\n分数 67 -> 等级 及格(C)\n分数 58 -> 等级 不及格(F)\n分数 74 -> 等级 及格(C)\n",
+    "error": null
+  },
+  "comprehension": {
+    "code": "\n# 7. 列表推导式：一行代码完成特征变换\ntemps_c = [15.2, 18.6, 21.3, 24.8, 27.1]\n\ntemps_f = [c * 9 / 5 + 32 for c in temps_c]        # 摄氏 -> 华氏\nhigh_days = [c for c in temps_c if c > 20]          # 筛选高温日\n\nprint(\"华氏温度:\", [round(f, 1) for f in temps_f])\nprint(\"高于20度的天数:\", high_days)\n",
+    "output": "华氏温度: [59.4, 65.5, 70.3, 76.6, 80.8]\n高于20度的天数: [21.3, 24.8, 27.1]\n",
+    "error": null
+  },
+  "function_demo": {
+    "code": "\n# 8. 函数：封装可复用的模型评估逻辑\ndef evaluate(y_true, y_pred, verbose=True):\n    \"\"\"计算准确率\"\"\"\n    correct = sum(1 for t, p in zip(y_true, y_pred) if t == p)\n    acc = correct / len(y_true)\n    if verbose:\n        print(f\"样本数={len(y_true)}, 预测正确={correct}, 准确率={acc:.1%}\")\n    return acc\n\ny_true = [1, 0, 1, 1, 0, 1]\ny_pred = [1, 0, 0, 1, 0, 1]\nacc = evaluate(y_true, y_pred)\nprint(\"返回值:\", acc)\n",
+    "output": "样本数=6, 预测正确=5, 准确率=83.3%\n返回值: 0.8333333333333334\n",
+    "error": null
+  },
+  "class_demo": {
+    "code": "\n# 9. 类与对象：一个极简\"线性模型\"\nclass LinearModel:\n    def __init__(self, w=0.0, b=0.0):   # 构造方法\n        self.w = w\n        self.b = b\n\n    def predict(self, x):               # 实例方法\n        return self.w * x + self.b\n\nmodel = LinearModel(w=2.0, b=1.0)\nprint(\"x=3 时的预测值:\", model.predict(3))\nprint(\"x=10 时的预测值:\", model.predict(10))\n",
+    "output": "x=3 时的预测值: 7.0\nx=10 时的预测值: 21.0\n",
+    "error": null
+  },
+  "numpy_demo": {
+    "code": "\n# 10. NumPy：AI 数值计算的基石\nimport numpy as np\n\na = np.array([1, 2, 3, 4])\nA = np.array([[1, 2], [3, 4]])\nB = np.ones((2, 2))\n\nprint(\"一维数组:\", a, \" 形状:\", a.shape)\nprint(\"批量运算 a*2+1:\", a * 2 + 1)        # 向量化，无需for循环\nprint(\"矩阵 A:\")\nprint(A)\nprint(\"矩阵乘法 A@B:\")\nprint(A @ B)\nprint(\"均值/最大值:\", a.mean(), a.max())\n",
+    "output": "一维数组: [1 2 3 4]  形状: (4,)\n批量运算 a*2+1: [3 5 7 9]\n矩阵 A:\n[[1 2]\n [3 4]]\n矩阵乘法 A@B:\n[[3. 3.]\n [7. 7.]]\n均值/最大值: 2.5 4\n",
+    "error": null
+  },
+  "pandas_demo": {
+    "code": "\n# 11. Pandas：结构化数据处理实战\nimport pandas as pd\nimport numpy as np\n\ndf = pd.DataFrame({\n    \"姓名\": [\"张三\", \"李四\", \"王五\", \"赵六\"],\n    \"学习时长(h)\": [10, 25, np.nan, 40],\n    \"测验成绩\": [65, 88, 72, 95],\n})\nprint(\"原始数据(含缺失值):\")\nprint(df)\n\ndf[\"学习时长(h)\"] = df[\"学习时长(h)\"].fillna(df[\"学习时长(h)\"].mean())\ndf[\"是否达标\"] = df[\"测验成绩\"] >= 80\nprint(\"\\n填充缺失值并添加达标标签后:\")\nprint(df)\nprint(\"\\n按是否达标统计平均成绩:\")\nprint(df.groupby(\"是否达标\")[\"测验成绩\"].mean())\n",
+    "output": "原始数据(含缺失值):\n   姓名  学习时长(h)  测验成绩\n0  张三     10.0    65\n1  李四     25.0    88\n2  王五      NaN    72\n3  赵六     40.0    95\n\n填充缺失值并添加达标标签后:\n   姓名  学习时长(h)  测验成绩   是否达标\n0  张三     10.0    65  False\n1  李四     25.0    88   True\n2  王五     25.0    72  False\n3  赵六     40.0    95   True\n\n按是否达标统计平均成绩:\n是否达标\nFalse    68.5\nTrue     91.5\nName: 测验成绩, dtype: float64\n",
+    "error": null
+  },
+  "linear_regression": {
+    "code": "\n# 12. 完整案例：用梯度下降训练线性回归 y = 2x + 1（纯 NumPy 实现）\nimport numpy as np\n\nnp.random.seed(42)\nx = np.random.uniform(0, 5, 100)             # 随机生成100个样本\ny = 2 * x + 1 + np.random.normal(0, 0.5, 100) # 加噪声的真实关系\n\nw, b, lr = 0.0, 0.0, 0.05                    # 初始化参数与学习率\nfor epoch in range(1, 501):\n    y_pred = w * x + b\n    loss = np.mean((y_pred - y) ** 2)        # 均方误差 MSE\n    grad_w = 2 * np.mean((y_pred - y) * x)   # 对 w 的梯度\n    grad_b = 2 * np.mean(y_pred - y)         # 对 b 的梯度\n    w -= lr * grad_w                          # 沿负梯度更新\n    b -= lr * grad_b\n    if epoch in (1, 100, 300, 500):\n        print(f\"epoch {epoch:3d} | loss = {loss:.4f} | w = {w:.4f} | b = {b:.4f}\")\n\nprint(f\"\\n训练结束: 学到的模型 y = {w:.3f}x + {b:.3f}（真实关系 y = 2.000x + 1.000）\")\n",
+    "output": "epoch   1 | loss = 41.0694 | w = 1.7683 | b = 0.5701\nepoch 100 | loss = 0.2020 | w = 1.9642 | b = 1.0751\nepoch 300 | loss = 0.2016 | w = 1.9541 | b = 1.1074\nepoch 500 | loss = 0.2016 | w = 1.9540 | b = 1.1075\n\n训练结束: 学到的模型 y = 1.954x + 1.108（真实关系 y = 2.000x + 1.000）\n",
+    "error": null
+  },
+  "sklearn_demo": {
+    "code": "\n# 13. 机器学习初体验：sklearn 三行代码训练鸢尾花分类器\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\n\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.3, random_state=42)\n\nmodel = KNeighborsClassifier(n_neighbors=3)\nmodel.fit(X_train, y_train)                  # 训练\nacc = model.score(X_test, y_test)            # 评估\nprint(f\"鸢尾花数据集: 训练样本 {len(X_train)} 条, 测试样本 {len(X_test)} 条\")\nprint(f\"KNN(k=3) 测试集准确率: {acc:.1%}\")\n",
+    "output": "鸢尾花数据集: 训练样本 105 条, 测试样本 45 条\nKNN(k=3) 测试集准确率: 100.0%\n",
+    "error": null
+  },
+  "matplotlib_demo": {
+    "code": "\n# Matplotlib 基础绘图三步：数据 -> 定制 -> 保存\nimport matplotlib.pyplot as plt\n\nplt.rcParams[\"font.sans-serif\"] = [\"PingFang SC\", \"Hiragino Sans GB\", \"Arial Unicode MS\"]\nplt.rcParams[\"axes.unicode_minus\"] = False   # 解决负号显示为方块的问题\n\nepochs = [1, 2, 3, 4, 5]\ntrain_loss = [0.90, 0.55, 0.35, 0.27, 0.24]\nval_loss = [0.95, 0.62, 0.45, 0.38, 0.36]\n\nplt.figure(figsize=(6, 3.5))\nplt.plot(epochs, train_loss, marker=\"o\", label=\"训练损失\")\nplt.plot(epochs, val_loss, marker=\"s\", label=\"验证损失\")\nplt.xlabel(\"Epoch\"); plt.ylabel(\"Loss\")\nplt.title(\"模型训练/验证损失曲线\")\nplt.legend(); plt.grid(alpha=0.3)\nplt.savefig(\"assets/mini_loss_curve.png\", dpi=120, bbox_inches=\"tight\")\nprint(\"图表已保存: mini_loss_curve.png\")\nprint(\"最终训练损失:\", train_loss[-1], \"| 验证损失:\", val_loss[-1])\n",
+    "output": "图表已保存: mini_loss_curve.png\n最终训练损失: 0.24 | 验证损失: 0.36\n",
+    "error": null
+  }
+}
